@@ -1,0 +1,19 @@
+xrdb ~/.Xdefaults
+#uxterm &
+#xmodmap -e "add mod4 = Super_R"
+#xmodmap -e "add Meta = Super_L" 
+#xmodmap ~/.xmodmaprc
+xbindkeys
+
+#exec urxvt -e run_dwm.sh
+#exec dtach -n dwm /usr/bin/dwm
+if [ $1 = "-n"
+	then
+	exit 23
+fi
+xmonad
+
+#run_dwm.sh
+#exec bash -c /home/tiago/bin/run_dwm.sh
+
+# exec dwm

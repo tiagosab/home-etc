@@ -1,0 +1,18 @@
+/* -*- css -*- 
+~/.html2psrc */
+
+
+@html2ps {
+    option {
+        twoup: 1;
+        grayscale: 1;
+        landscape: 1;
+        number: 1;
+    }
+}
+
+BODY {
+      font-size: 14pt;
+      font-family: Helvetica;
+      text-align: justify
+}

@@ -1,0 +1,5 @@
+# Readline configuration file (~/.inputrc)
+# See bash(1).
+set show-all-if-ambiguous on
+set visible-stats on
+set bell-style visible

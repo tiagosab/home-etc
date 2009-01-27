@@ -1,0 +1,3 @@
+tmpdir = '/tmp'
+toaddress = 'tiagosaboga@gmail.com'
+subject = '[backup] Backing up %s'

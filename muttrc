@@ -1,0 +1,182 @@
+set realname="Tiago Saboga"
+
+set reverse_name
+set from="tiagosaboga@gmail.com"
+alternates -group 'eu' "tiagosaboga@oi.com.br|tiagosaboga@terra.com.br|tiagosab@yahoo.com|klain@users.sourceforge.net"
+set use_from=yes
+set use_envelope_from
+
+set editor='emacsclient.emacs-snapshot -nw'
+set print_command="muttprint"
+set folder=~/Mail
+
+mailboxes /home/tiago/Mail/incoming \
+                 `find /home/tiago/Mail/deblists -mindepth 1 -maxdepth 1 -type d -print0 \
+                 | xargs -0 echo` \
+		 `find /home/tiago/Mail/listas -mindepth 1 -maxdepth 1 -type d -print0 \
+                 | xargs -0 echo` \
+		 `find /home/tiago/Mail/omegat-lists -mindepth 1 -maxdepth 1 -print0 \
+		 | xargs -0 echo` \
+		 `find /home/tiago/Mail/shazam -mindepth 1 -maxdepth 1 -print0 \
+		 | xargs -0 echo` \
+         `find /home/tiago/Mail/jna -mindepth 1 -maxdepth 1 -print0 \
+         | xargs -0 echo` \
+		 /home/tiago/Mail/spam/spam-inbox \
+		 /home/tiago/Mail/yahoo
+
+set index_format="%4C %Z %{%b %d} %-15.15F (%?l?%4l&%4c?) %s"
+
+lists lists.debian.org
+subscribe debian-user-portuguese
+subscribe debian-user-french
+subscribe debian-java
+subscribe python-tutor
+subscribe debian-mentor
+subscribe eskuerra
+subscribe anti-duhring
+subscribe pkg-java-maintainers
+subscribe users@jna
+subscribe dev@jna
+
+my_hdr Bcc: tiagosaboga@gmail.com
+
+# auto_view text/html
+
+alias d-u-f Debian-FR <debian-user-french@lists.debian.org>
+alias d-u-p Debian User Portuguese <debian-user-portuguese@lists.debian.org>
+alias ot-dev OmegaT-devel <omegat-development@lists.sourceforge.net>
+alias cahier cahier <cahier@yahoogrupos.com.br>
+alias a-d anti-duhring <anti-duhring@yahoogroups.com>
+alias d-java Debian-java <debian-java@lists.debian.org>
+alias pytutor <tutor@python.org>
+
+# omegat
+
+subscribe omegat-dev-tech
+subscribe omegat-issues
+subscribe omegat-changes
+subscribe OmegaT
+subscribe omegat-development
+alias ot-tech <omegat-dev-tech@lists.sourceforge.net>
+alias ot OmegaT <OmegaT@yahoogroups.com>
+
+# shazam
+
+subscribe shazam-devel
+alias shazamdev Shazam-devel <shazam-devel@lists.sourceforge.net>
+subscribe shazam-commits
+subscribe shazam-issues
+
+macro generic,index,pager \ca "<shell-escape>/home/tiago/bin/pycocuma<return>" "launch pycocuma"
+macro index,pager A "<pipe-message>/home/tiago/bin/pycocuma --add-email<return>" "add the sender address to pycocuma"
+# set query_command="abook --mutt-query %s"
+set query_command="/home/tiago/src/pyti/pycocuma/pycocuma --mutt-query %s 2>/dev/null"
+# macro pager A |'abook --add-email'\n
+
+
+####
+###
+##  Colour settings
+#
+
+#  match ftp addresses:
+color body    cyan black "ftp://[^ ]*"
+#  match http addresses:
+color body    brightgreen black "[[:alnum:]][-+.#_[:alnum:]]*@[-+.[:alnum:]]*[[:alnum:]]"
+
+color normal  white black # pager body
+
+#  Coloring quoted text - coloring the first 7 levels:
+color quoted    cyan black
+color quoted1   yellow black
+color quoted2   red black
+color quoted3   green black
+color quoted4   cyan black
+color quoted5   yellow black
+color quoted6   red black
+color quoted7   green black
+
+color signature brightred black
+color status    white blue
+color tilde     blue black
+color tree      brightmagenta black
+color underline yellow black
+
+#  Colorize smileys:  :-)  ;-)  :-/  :-(
+color body  yellow black "[;:]-[)/(|]"
+color body  yellow black "[;:][)/(|]"
+color body  green black "[[:alpha:]]\+://[^ ]*"
+
+color header red black '^Subject.*'
+color header yellow black '^X-Debian-PR-Package.*'
+color header green black 'From:.*'
+
+#  Remember:  Order counts!  The last matching rule "wins".
+#  So we'll start with some general rules first:
+color index yellow black ~N      # New
+color index yellow black ~O      # Old
+
+color index green black "~f $from !~O !~N"
+color index green black "%f eu !~O !~N"
+
+# mail to myself (personal mail):
+#color index brightgreen black '~p'
+color index magenta black ~F
+color index blue black ~T
+color index red black ~D
+
+
+####
+
+#set status_format="-%h:%f [ %M/%m, n:%n, t:%t, %l ]-[%b new]-"
+###
+##
+#
+
+unignore *
+ignore content deliver errors-to importance in-reply list mail message-id
+ignore mime precedence priority received references resent return-path sender
+ignore x-accept x-authentication x-beenthere x-cid x-complaints x-dispatcher
+ignore x-egroups x-envelope x-fingerprint x-juno x-keywords x-loop
+ignore x-mailing x-mailman x-mime x-ms x-news x-origina x-orcpt envelope
+ignore x-priority x-sender x-smtp x-trace x-uid x-unsent x-ftn
+ignore old-x-envelope x-gateway old-return-path x-virus-scanned
+ignore x-spam x-return-path x-authenticated-sender x-md x-list x-scanner
+ignore "from " status lines x-status >from x-received x-bogosity
+# awesome barracuda spam headers
+ignore x-asg x-barracuda
+ignore domainkey-signature
+ignore x-brightmail x-ironport
+
+hdr_order Date From: Subject: Reply-To: To: Cc: Bcc:
+alias herio hsab@oi.com.br
+alias d-m debian-mentors@lists.debian.org
+alias vfontes Virginia Fontes <vfontes@superig.com.br>
+alias deborah Deborah Berman <DBerman@br.loreal.com>
+alias paolalins Paola Lins <paolalins@gmail.com>
+alias didier Didier Briel <d.briel@free.fr>
+alias thomas Thomas <thsa@superig.com.br>
+
+# Press X to mark a message as spam and delete it
+macro index X "s=spam/spam\ns" "mark as spam"
+macro pager X "s=spam/spam\n" "mark as spam"
+
+# Press H to mark a message as non-spam (ham)
+macro index H "C=spam/ham\ns" "mark as ham"
+macro pager H "C=spam/ham\ns" "mark as ham"
+
+# Load mutt manual in w3mmee
+macro generic <f1> "!w3mmee /usr/share/doc/mutt/html/manual.html\n" "Show Mutt documentation"
+macro index   <f1> "!w3mmee /usr/share/doc/mutt/html/manual.html\n" "Show Mutt documentation"
+macro pager   <f1> "!w3mmee /usr/share/doc/mutt/html/manual.html\n" "Show Mutt documentation"
+alias irene Irene Seigle <irenes.rlk@terra.com.br>
+
+# folder hooks
+
+# mark my own messages as read when entering any folder
+macro index i "<tag-pattern>~f$from|%feu<return><tag-prefix-cond><clear-flag>N<end-cond><untag-pattern>.<return>"
+alias Michael_Koch Michael Koch <konqueror@gmx.de>
+alias Elaine Elaine Marques <elaine_6008@yahoo.com.br>
+alias Carol carolscp@globo.com
+alias itaita itaita@yahoogroups.com
+alias davivercillo \"Davi Vercillo C. Garcia\" <davivercillo@gmail.com>

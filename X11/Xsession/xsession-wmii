@@ -1,0 +1,17 @@
+xrdb ~/.Xdefaults
+#uxterm &
+#xmodmap -e "add mod4 = Super_R"
+#xmodmap -e "add Meta = Super_L" 
+#xmodmap ~/.xmodmaprc
+xbindkeys
+
+#exec urxvt -e wmii
+#exec dtach -n dwm /usr/bin/dwm
+if [ $1 = "-n"
+	then
+	exit 23
+fi
+wmii
+#exec bash -c /home/tiago/bin/wmii
+
+# exec dwm

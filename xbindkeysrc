@@ -1,0 +1,81 @@
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 0.1.3
+#
+# If you edit this, do not forget to uncomment any lines that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h 
+# The XK_ is not needed. 
+#
+# List of modifier (on my keyboard): 
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
+#   Mod1 (CapsLock), Mod4, Mod5 (Scroll). 
+#
+# Another way to specifie a key is to use 'xev' and set the 
+# keycode with c:nnn or the modifier with m:nnn where nnn is 
+# the keycode or the state returned by xev 
+#
+# This file is created by xbindkey_config 
+# The structure is : 
+# # Remark 
+# "command" 
+# m:xxx + c:xxx 
+# Shift+... 
+
+
+
+
+#keystate_numlock = enable
+#keystate_scrolllock = enable
+#keystate_capslock = enable
+
+
+
+#Remark
+"urxvt -e mutt"
+    Mod1 + m 
+"oowriter"
+    Mod1 + w
+"iceweasel"
+    Mod1 + i
+"urxvt -e /home/tiago/bin/bash-remote"
+    Mod1 + x
+# Now v is used for vmware
+#"vlc"
+#    Mod1 + v
+"urxvt"
+    Mod1 + backslash
+"amixer sset Front 1+"
+    Mod1 + KP_Add
+"amixer sset Front 1-"
+    Mod1 + KP_Subtract
+"toggle_mute.sh"
+    Mod1 + KP_Decimal
+"konqueror"
+    Mod1 + k
+#"urxvt"
+#    Mod1 + KP_Up
+"emas"
+    Mod1 + e
+# "/home/tiago/.mozilla/firefox/r6yqhy0u.default/extensions/VMwareVMRC@vmware.com/plugins/vmware-vmr# c -h '127.0.0.1:8333' -M '112'"
+"/home/tiago/bin/kvmnow"
+    Mod1 + v
+"AWT_TOOLKIT=MToolkit netbeans"
+    Mod1 + n
+"urxvt -e ipython"
+    Mod1 + p
+"urxvt -e screen"
+    Mod1 + s
+"grun"
+    Mod1 + z
+
+#"xclock"
+#    Mod1 + l
+
+
+#
+# End of xbindkeys configuration
