@@ -17,5 +17,20 @@ defscrollback 5000
 # don't display the copyright page
 startup_message off
 
-
 shelltitle "$ |bash"
+
+#
+#  Toggle 'fullscreen' or not.
+#
+# bind f eval "caption splitonly" "hardstatus ignore"
+# bind F eval "caption always"    "hardstatus alwayslastline"
+
+#
+# look and feel for the bottom two lines.
+#
+caption     always        "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y | %72=Load: %l %{wk}"
+hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
+
+screen -t mutt 0 /home/tiago/bin/mutt
+screen -t aptitude 1 /home/tiago/bin/apti
+screen -t bash 2

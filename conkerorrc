@@ -1,0 +1,16 @@
+add_delicious_webjumps ("tiagosab");
+url_remoting_fn=load_url_in_new_buffer;
+define_webjump("t", "http://www.cnrtl.fr/definition/%s");
+define_webjump("gcode", "http://www.google.com/codesearch?q=%s&hl=en&btnG=Search+Code");
+define_webjump("py", "http://www.google.com/search?hl=en&q=site%3Apython.org+%s&btnG=Search");
+define_webjump("dbug", "http://bugs.debian.org/%s");
+define_webjump("marx", "http://www.google.com/search?hl=en&ie=utf8&oe=utf8&as_sitesearch=www.marxists.org&as_sitesearch=www.marxists.org&as_q=%s");
+define_webjump("gf", "http://www.google.fr/search?hl=fr&q=%s&ie=utf8&oe=utf8&lr=fr");
+define_webjump("gp", "http://www.google.com/search?hl=pt_br&q=%s&ie=utf8&oe=utf8&lr=pt");
+define_webjump("d2f", "http://dict.leo.org/?lp=frde&search=%s");
+//define_webjump("", "");
+
+require("wikipedia-webjumps.js");
+wikipedia_webjumps_format = "w%s"; // controls the names of the webjumps.  default is "wikipedia-%s".
+define_wikipedia_webjumps("en", "de", "fr", "pt"); // For English, German and French.
+// define_wikipedia_webjumps(); // To make use of ALL of the webjumps (200+).

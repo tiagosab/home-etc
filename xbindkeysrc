@@ -43,7 +43,7 @@
 "iceweasel"
     Mod1 + i
 "urxvt -e /home/tiago/bin/bash-remote"
-    Mod1 + x
+    Mod1 + q
 # Now v is used for vmware
 #"vlc"
 #    Mod1 + v
@@ -59,7 +59,7 @@
     Mod1 + k
 #"urxvt"
 #    Mod1 + KP_Up
-"emas"
+"emacsclient -c"
     Mod1 + e
 # "/home/tiago/.mozilla/firefox/r6yqhy0u.default/extensions/VMwareVMRC@vmware.com/plugins/vmware-vmr# c -h '127.0.0.1:8333' -M '112'"
 "/home/tiago/bin/kvmnow"

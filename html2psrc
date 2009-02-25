@@ -12,7 +12,12 @@
 }
 
 BODY {
-      font-size: 14pt;
-      font-family: Helvetica;
-      text-align: justify
+    /* visibility: hidden;        */
+    font-size: 14pt;
+    font-family: Helvetica;
+    text-align: justify
 }
+
+/* #art* { */
+/*     visibility: visible; */
+/* } */

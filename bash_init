@@ -1,9 +1,10 @@
 # -*-shell-script-*-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#
+# both ~/.bashrc and ~/.bash_profile are symbolic links to this
+# file. I have the same settings for login and non-login shells.
+#
 
-# debug - don't forget to remove the screen invocation at the end.
+# debug
 # set -x
 
 # If not running interactively, don't do anything
@@ -87,25 +88,6 @@ xterm*|rxvt*|screen)
     ;;
 esac
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/etc/bash_aliases ]; then
-    . ~/etc/bash_aliases
-fi
-
-# enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-fi
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
@@ -118,9 +100,16 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# variables
 export PYTHONPATH='/home/tiago/lib/python'
 export DEBFULLNAME='Tiago Saboga'
 export DEBEMAIL='tiagosaboga@gmail.com'
+export EDITOR='emacsclient -nw'
+export VISUAL='emacsclient -nw'
+
+PROJECT_PARENT_DIRS[0]="$HOME/home/aulasfran/alunos"
+PROJECT_PARENT_DIRS[1]="$HOME/home"
+PROJECT_PARENT_DIRS[2]="$HOME/src"
 
 #   ---*--- SSH ---*---
 SSH_ENV="$HOME/.ssh/environment"
@@ -142,4 +131,21 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi 
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/etc/bash_aliases ]; then
+    . ~/etc/bash_aliases
+fi
+
+if [ -f ~/etc/bash_functions ]; then
+    . ~/etc/bash_functions
+fi
+
+# Start emacs if not done.
+
+emacsclient -e '(message "Contacting home.")' >/dev/null || emacs -daemon
 
