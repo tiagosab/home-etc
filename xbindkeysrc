@@ -55,7 +55,7 @@
     Mod1 + KP_Subtract
 "toggle_mute.sh"
     Mod1 + KP_Decimal
-"konqueror"
+"conkeror"
     Mod1 + k
 #"urxvt"
 #    Mod1 + KP_Up
