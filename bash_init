@@ -11,15 +11,6 @@
 # [ -z "$PS1" ] && return
 [ "$(echo $- | grep -c i)" == 0 ] && return
 
-# if we are not in screen, start it.
-if [ "x$TERM" != "xscreen" -a "x$NOSCREEN" != "xTRUE" ] 
-then
-    for f in $HOME/etc/bash.d/local/*
-    do
-        . "$f"
-    done
-fi
-
 # Disable C-s/C-q (xon/xoff flow control)
 stty stop undef
 stty start undef
