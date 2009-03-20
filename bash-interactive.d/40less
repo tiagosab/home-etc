@@ -1,0 +1,15 @@
+#   ---*--- LESS ---*---
+# make less more friendly for non-text input files, see lesspipe(1)
+# [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+# downloaded lesspipe from somwhere on the net...
+#
+# for downloaded lesspipe:
+# export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
+# for source-highlight
+# export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+# for highlight
+# export LESSOPEN="|/usr/bin/highlight -A %s"
+# for internal lesspipe
+export LESSOPEN="| /usr/bin/lesspipe %s";
+export LESSCLOSE="/usr/bin/lesspipe %s %s";
+export LESS='--RAW-CONTROL-CHARS -M --tabs=4'

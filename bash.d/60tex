@@ -1,0 +1,4 @@
+#  ----*---- tex/latex settings ----*----
+# set my tex home
+export TEXMFHOME=${HOME}/lib
+

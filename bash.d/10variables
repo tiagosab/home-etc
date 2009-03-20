@@ -1,0 +1,6 @@
+export PYTHONPATH='/home/tiago/lib/python'
+export DEBFULLNAME='Tiago Saboga'
+export DEBEMAIL='tiagosaboga@gmail.com'
+export EDITOR='emacsclient -nw'
+export VISUAL='emacsclient -nw'
+

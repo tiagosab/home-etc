@@ -1,0 +1,8 @@
+# ----*---- emacs ----*----
+# 
+# This section must come after the tex section, and probably after the
+# ssh section also.
+#
+# Start emacs if not done.
+
+emacsclient -e '(message "Contacting home.")' -a '' 2>/dev/null 1>&2
