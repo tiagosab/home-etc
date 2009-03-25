@@ -64,8 +64,8 @@
 # "/home/tiago/.mozilla/firefox/r6yqhy0u.default/extensions/VMwareVMRC@vmware.com/plugins/vmware-vmr# c -h '127.0.0.1:8333' -M '112'"
 "/home/tiago/bin/kvmnow"
     Mod1 + v
-"AWT_TOOLKIT=MToolkit netbeans"
-    Mod1 + n
+#"AWT_TOOLKIT=MToolkit netbeans"
+#    Mod1 + n
 "urxvt -e ipython"
     Mod1 + p
 "urxvt -e screen"
