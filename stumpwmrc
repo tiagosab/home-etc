@@ -1,0 +1,293 @@
+;; -*- lisp -*-
+;; ~/.stumpwmrc
+
+(in-package :stumpwm)
+
+;Variables
+
+;; Terminals are important.  Commented out, as the debian way is
+;; update-alternatives, at least when you want always to use the same
+;; command
+;;
+;; (defparameter X-TERM 
+;;   "exec aterm -fn '-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*' -sh 15 -tr -trsb -cr yellow -pr green -bl +vb -ut +sr -sl 1000 +rv -fade 50 -fg white -bgtype scale -txttype true -bd black +sb -tint purple "
+;;   "What shall be the command run when we want an X terminal?")
+
+
+;;I don't really want to be constantly typing "concatenate 'string" - this simplifies things.
+;;Thanks to sabetts of #stumpwm
+(defun cat (&rest strings) "Concatenates strings, like the Unix command 'cat'. A shortcut for (concatenate 'string foo bar)."
+       (apply 'concatenate 'string strings))
+   
+;;Text browsers are good, too.
+(defparameter X-TERM-BROWSER "exec x-terminal-emulator -e elinks"
+  "We will want to open up our chosen CLI web browser in our chosen X terminal. What is it?")
+
+;;Yay for GUI web browsing!
+(defparameter X-WWW-BROWSER "exec conkeror "
+  "What GUI WWW browser shall we use?")
+
+;;Image viewers can be useful.
+(defparameter X-IMAGE-VIEWER "exec kuickshow "
+  "Sometimes I like to look at images. We need some sort of client for that.")
+;;Window border colors
+(setf *focus-color* "green")
+(setf *unfocus-color* "black")
+   
+;;Set the font for the input box. I have a nifty Lisp machine font.
+(set-font 
+ ;"-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*")
+ ;"-unknown-freemono-medium-r-normal--16-0-0-0-c-0-iso8859-1" 
+ "-*-deja vu sans mono-r-*-*-14-*-*-*-c-0-*-*")
+
+;;Set the message and input box to the bottom right. This way it overlaps with mode-line.
+(setf *message-window-gravity* :top-left)
+(setf *input-window-gravity* :bottom-right)
+   
+;;Colors for the input box; these should fairly self-explanatory. 'set-fg-color' will change the color
+;;of the font in the echo area, for example, and the background will be green,
+;;and the rectangle's lines will be a thin yellow, of course.
+(set-bg-color "black")
+(set-fg-color "lightgreen")
+(set-border-color "yellow")
+   
+;;Specifically, I want mode line to display the result of having the shell create a string
+;;of the concatenation of a space and the output of the 'date' program.
+(setf stumpwm:*screen-mode-line-format*
+      (list "%w|%g|"
+            '(:eval (stumpwm:run-shell-command "date +%_I:%M:%S%p--%e-%a|tr -d [:cntrl:]" t))))
+   
+(defun update-mode-line () "Update the mode-line sooner than usual."
+       (let ((screen (current-screen)))
+         (when (screen-mode-line screen)
+           (redraw-mode-line-for (screen-mode-line screen) screen))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;Functions;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;Briefly display a single frame from the top command and bind to a key.
+;;Inspiration: <http://hocwp.free.fr/temp/stumpwmrc>
+(define-stumpwm-command "run-top" ()
+  (shell-command "top -b -n 1 -c -d 1"))
+
+(define-stumpwm-command "emacs" ()
+  (run-or-raise "emacsclient -c -a" :class "Emacs"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;Startup programs;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;What programs do we run on startup?
+
+;;Great! Let's start mode-line for all screens!
+;(screen-mode-line-mode (current-screen) t)
+;(toggle-mode-line)
+
+;;Do some key re-mapping; it is crucial that this get run first, because otherwise
+;;the remapping later on of Insert and less to the prefix key simply will not work.
+;(run-shell-command "xmodmap -quiet ~/.Xmodmap")
+  
+;; Load X resources.
+(run-shell-command "xrdb -load ~/etc/X11/Xdefaults -quiet")
+  
+;;Change the background and pointer in X
+(run-shell-command "xsetroot -cursor_name left_ptr -gray -fg darkgreen -bg black -name root-window")
+
+;;Always good to have a shell
+(run-shell-command "urxvt -e screen -xRR")
+  
+;;Run unclutter so the mouse hangs around no longer than needed.
+(run-shell-command "unclutter -idle 1 -jitter 2 -root")
+   
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;Key binding;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;Make the bindings more comfortable.
+   
+;;Set the *prefix-key*. The main feature of note is the changing of
+;;the escape sequence from 2 keys, C-t, to a single key,
+;;and the mirroring of less with another key, so there are actually 2 equivalent escape keys.
+(set-prefix-key (kbd "Menu"))
+   
+;;When not in Stumpwm mode, we want Insert to be bound to enter Stumpwm mode
+(define-key *top-map* (kbd "Insert") '*root-map*)
+(define-key *root-map* (kbd "Insert") "next") ;;When in Stumpwm mode, act like hitting the prefix again would.
+   
+;;You remember what run-top did, don't you? Defined in the functions section.
+(define-key *root-map* (kbd "&") "run-top")
+
+;;Allow short displays of shell output. Don't run GUI programs through this! Overrides default.
+;(define-key *root-map* (kbd "!") "shell-command")
+
+;;Browse somewhere with the GUI WWW browser.
+(define-key *root-map* (kbd "b") (cat "colon " X-WWW-BROWSER " http://www."))
+(define-key *root-map* (kbd "B") "open-selection-browser")
+
+;;SSH somewhere in the default terminal.
+;(define-key *root-map* (kbd "C-s") (cat "colon " X-TERM " -e ssh "))
+
+;;Terminals. S-c does a regular terminal, and S-C allows a single command.
+;(define-key *root-map* (kbd "c") X-TERM)
+
+;;S-C is supposed to ask for a command to run in a new terminal. So, we need the colon command,
+;;combined with our default X terminal, and since that is Aterm, the option to run a command is '-e', so we need that as well.
+;(define-key *root-map* (kbd "C") (cat "colon " X-TERM " -e "))
+
+;;Shortcut for Emacs. Emacsclient is called, but it expects a filename.
+;;This can be circumvented by instructing it to instead evaluate a Emacslisp expression -
+;;the current one - says "open up a new frame on the current display device".
+;;It has to be quoted or else sh will try to open up the lisp expression in a sub-shell
+;;as a shell command. Neatly, if an Emacs isn't already running, then Emacsclient runs
+;;$EDITOR, which points back to regular Emacs!
+;(define-key *root-map* (kbd "E") "exec emacsclient -a emacs -t EMACS")
+(define-key *root-map* (kbd "e") "emacs") ;"emacs" is defined in functions.
+   
+;;Shortcut for Nano
+;(define-key *root-map* (kbd "M-E") (cat "colon " X-TERM " -e nano"))
+
+;;Image viewer
+(define-key *root-map* (kbd "v") "image-viewer") ;;"image-viewer" is defined in functions.
+
+;;Make prtscreen work, as long as in command mode. "import" is an Imagemagick command.
+(define-key *root-map* (kbd "Print") "exec import -window root png:$HOME/xwd-$(date +%s)$$.png")
+   
+;;'Swounds, I'm gonna need a separate section just for Surfraw shortcuts.
+;;Anyway, the model for these (thanks to aon) is to bind a key to "colon exec surfraw wikipedia "
+;;(or whatever the site is) note the space. If the space isn't there, then the user will need to
+;;manually add a space, which is not good. In the shell, one can omit the surfraw command, but
+;;not in stumpwm, as stumpwm's PATH currently does not seem to include the directory with the elvi in it.
+;;List of useful surfraw elvi follows:
+;;amazon bbcnews cia cite cnn debbugs debcontents deblists deblogs debpackages debpts deja dmoz ebay etym
+;;freshmeat google imdb rfc rhyme slashdot sourceforgen translate
+   
+;;Surfraw keybindings.
+(define-key *root-map* (kbd "t") "wikipedia")
+(define-key *root-map* (kbd "T") "wikipedia-selection")
+
+(define-key *root-map* (kbd "g") "google ")
+(define-key *root-map* (kbd "G") "google-selection")
+
+(define-key *root-map* (kbd "y") "wayback ")
+(define-key *root-map* (kbd "Y") "wayback-selection")
+
+(define-key *root-map* (kbd "u") "debbugs ")
+(define-key *root-map* (kbd "U") "debpackages ")
+   
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;Groups;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;Change various group things.
+   
+;;Refer to user.lisp
+;;Currently, when one hits S-g, one enters group-mode, wherein the keys
+;;are rebound to serve as group movement commands. I might want to change this.
+;;(define-key (kbd "`") '*groups-map*)
+
+;;Two quick and easy shortcuts - one to switch rapidly between groups and another to list them.
+;;Anything more elaborate can be done by going through group-mode.
+(define-key *root-map* (kbd "~") "vgroups")
+(define-key *root-map* (kbd "quoteleft") "gprev")
+
+
+;;If the current window is Emacs, let's ban it to the Emacs
+;;group. This loses a bit of flexibility, but it means startups will
+;;be more pleasant. The remove-hook should mean Emacs gets moved only
+;;once.  And yes, you do actually need a defun and a add-hook to
+;;guarantee sticking an application into a particular group.  TODO:
+;;generalize this
+(defun move-emacs (window)  "Move emacs to the Emacs group."
+       (if (string= (window-class window) "Emacs")
+           (stumpwm::run-commands "gmove Emacs"))
+       (remove-hook stumpwm::*map-window-hook* 'move-emacs)
+       )
+(stumpwm:add-hook *map-window-hook* 'move-emacs)
+
+;;Automatically open up another virtual desktop; in a surprising show
+;;of originality, I will name it Emacs, since that's what I usually
+;;use in it.
+(run-commands
+ "gselect Emacs"
+ "emacs") ;;Because of the previous defun and hook, the emacs will be moved to the right group automatically
+   
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;Pasting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;Loads in some functions to allow multiple registers (think Emacs-style). Binds to numerical keys.
+;;See <http://stumpwm.elektrubadur.se/cgi-bin/wiki/paste.lisp>
+;(load "/home/gwern/bin/paste.lisp")
+   
+   
+   ;;;;I don't quite understand this stuff yet. It's ripped from Luigi
+   ;;;;Panzeri's .stumpwmrc, and he's doing some interesting stuff
+   ;;;;which seems powerful but which I haven't yet figured out what
+   ;;;;it is doing, much less why.
+   ;;   ____
+   ;;  / ___|_ __  ___  _   _ _ __   ___
+   ;; | |  _| '__|/ _ \| | | | '_ \ / __|
+   ;; | |_| | |  | (_) | |_| | |_) |\__ \
+   ;;  \____|_|   \___/ \__,_| .__/ |___/
+   ;;                        |_|
+   
+(defun find-group-by-name (name)
+  (find name (screen-groups (current-screen)) :test #'string-equal :key #'group-name))
+
+(defun place-windows-on-group (group &key class)
+  (lambda (win)
+    (when (string-equal (window-class win) class)
+      (move-window-to-group win group))))
+
+(defun place-windows-on-frame (group frame &key class)
+  (lambda (win)
+    (when (string-equal (window-class win) class)
+      (move-window-to-group win group)
+      (setf (window-frame win) frame)
+                                        ;      (sync-frame-windows group frame)
+      (echo-string (current-screen) (format nil "Window ~a placed in group ~a" (window-name win) (group-name group))))))
+   
+(defun horiz-split-frame-and-resize (group fraction)
+  (horiz-split-frame group)
+  (let ((frame (tile-group-current-frame group)))
+    (resize-frame group
+                  frame
+                  (truncate (* (- (* 2 fraction) 1) (frame-width frame)))
+                  'width)))
+
+(defun vert-split-frame-and-resize (group fraction)
+  (vert-split-frame group)
+  (let ((frame (tile-group-current-frame group)))
+    (resize-frame group
+                  frame
+                  (truncate (* (- (* 2 fraction) 1) (frame-height frame)))
+                  'height)))
+
+(defmacro horizontally (&rest frame-specs)
+  `(let ((accum 1)
+         (frame-specs (sort ',frame-specs (lambda (el1 el2)
+                                            (cond
+                                              ((not (numberp el1)) nil)
+                                              ((not (numberp el2)) t))))))
+     (dolist (frame-spec (butlast frame-specs))
+       (destructuring-bind (fraction window-queries) frame-spec
+         (when (numberp fraction)
+           (decf accum fraction))
+         (horiz-split-frame-and-resize group (if (numberp fraction) fraction accum))
+         (dolist (window-query window-queries)
+           (ecase (car window-query)
+             (:class (add-hook *map-window-hook*
+                               (place-windows-on-frame group (tile-group-current-frame group) :class (cadr window-query)))))))
+       (focus-frame-sibling group))
+     (destructuring-bind (fraction window-queries) (car (last frame-specs))
+       (declare (ignore fraction))
+       (dolist (window-query window-queries)
+         (ecase (car window-query)
+           (:class (add-hook *map-window-hook* (place-windows-on-frame group
+                                                                       (tile-group-current-frame group)
+                                                                       :class (cadr window-query)))))))))
+
+(defmacro define-group-layout (group-name layout-spec)
+  `(let* ((group (or (find-group-by-name ,group-name)
+                     (add-group (current-screen) ,group-name))))
+     
+     ,layout-spec))
+
+;;EOF
