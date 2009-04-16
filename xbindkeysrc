@@ -68,7 +68,7 @@
 #    Mod1 + n
 "urxvt -e ipython"
     Mod1 + p
-"urxvt -e screen"
+"urxvt -e screen -xRR"
     Mod1 + s
 "grun"
     Mod1 + z
