@@ -1,0 +1,8 @@
+xrdb ~/.Xdefaults
+xbindkeys
+
+if [ $1 = "-n"
+	then
+	exit 23
+fi
+exec stumpwm
