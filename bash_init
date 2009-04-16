@@ -11,7 +11,7 @@ etcpath="${HOME}/etc"
 
 sourcedir="${etcpath}/bash.d"
 for file in "$sourcedir/"* ; do
-    echo "$file"
+#    echo "$file"
     test -r "$file" && . "$file"
 done
 
