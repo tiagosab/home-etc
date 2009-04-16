@@ -1,10 +1,31 @@
-UXTerm*font:10x20
+##define FONT_BOLD  -*-monospace-bold-*-*-*-16-*-*-*-*-*-*-*
+
+##define FONT       -*-andale mono-medium-*-*-*-16-*-*-*-*-*-*-*
+#define FONT       -*-dejavu sans mono-medium-r-*-*-*-170-*-*-*-*-*-*
+#define FONTA       -*-courier-medium-*-*-*-20-*-*-*-*-*-*-*
+#define FONTB       -*-lucidatypewriter-medium-*-*-*-20-*-*-*-*-*-*-*
+#define FONTC       -*-lucida-medium-*-*-*-18-*-*-*-*-*-*-*
+#define FONTD       -*-fixed-*-*-*-20-*-*-*-*-*-*-*
+#define FONTE       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
+#define FONTF       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
+#define FONTG       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
+#define FONTH       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
+#define FONTI       -*-monospace-medium-*-*-*-16-*-*-*-*-*-*-*
+##define FONT_BOLD  -*-monospace-bold-*-*-*-16-*-*-*-*-*-*-*
+
+#include "/home/tiago/etc/X11/Xdefaults.d/emacs.xrdb"
+
+!UXTerm*font:FONT
+!10x20
+!XTerm*font:FONT
 UXTerm*saveLines:1500
-URxvt*font:10x20
+URxvt.font:FONTD
+!10x20
 URxvt*saveLines:1500 
 URxvt*background:black
 URxvt*foreground:white
 URxvt*scrollBar:False
 URxvt*boldFont:
 URxvt*boldItalicFont:
-
+URxvt*fading:30
+URxvt*scrollTtyOutput:off
