@@ -1,5 +1,8 @@
 xrdb ~/.Xdefaults
-xbindkeys
+
+# TS: I do not use any more X bindings; I am doing it in
+# TS: stumpwm.
+# xbindkeys
 
 if [ $1 = "-n"
 	then

@@ -11,6 +11,12 @@
 #define FONTG       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
 #define FONTH       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
 #define FONTI       -*-monospace-medium-*-*-*-16-*-*-*-*-*-*-*
+#define FONTJ       xft:Bitstream Vera Sans mono:size=17
+#define FONTK       -*-liberation.mono-*-r-*-*-*-*-*-*-*-*-*-*
+#define FONTL       -*-liberation.mono-*-r-*-16-*-*-*-*-*-*-*-*
+#define FONTM       -*-liberation.mono-*-r-*-20-*-*-*-*-*-*-*-*
+#define FONTN       xft:Liberation Mono:style=Bold:size=18
+#define FONTO       xft:DejaVu Sans Mono:size=18:style=Bold
 ##define FONT_BOLD  -*-monospace-bold-*-*-*-16-*-*-*-*-*-*-*
 
 #include "/home/tiago/etc/X11/Xdefaults.d/emacs.xrdb"
@@ -19,7 +25,7 @@
 !10x20
 !XTerm*font:FONT
 UXTerm*saveLines:1500
-URxvt.font:FONTD
+URxvt.font:FONTJ
 !10x20
 URxvt*saveLines:1500 
 URxvt*background:black

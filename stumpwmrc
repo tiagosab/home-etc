@@ -66,13 +66,30 @@
 ;;;;;;;;;;;;;;;;;;Functions;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;Briefly display a single frame from the top command and bind to a key.
-;;Inspiration: <http://hocwp.free.fr/temp/stumpwmrc>
-(define-stumpwm-command "run-top" ()
-  (shell-command "top -b -n 1 -c -d 1"))
+(defun show-shell-command (command) "Run a shell command and display
+   output to screen.  This must be used in a functional
+   side-effects-free style! If a program does not exit of its own
+   accord, Stumpwm might hang!"
+       (check-type command string)
+       (echo-string (current-screen) (run-shell-command command t)))
 
-(define-stumpwm-command "emacs" ()
-  (run-or-raise "emacsclient -c -a" :class "Emacs"))
+(defun surfraw (site searchkey) "Run surfraw command."
+       (check-type site string)
+       (check-type searchkey string)
+       (run-shell-command (cat "surfraw " site " " searchkey)))
+
+(defcommand invoke-surfraw (site searchkey) ((:string "where? ") (:string "what: "))
+            (surfraw site searchkey))
+
+(defcommand shell-command (command) ((:string "sh: "))
+            (check-type command string)
+            (show-shell-command command))
+
+(defcommand run-top () ()
+            (shell-command "top -b -n 1 -c -d 1"))
+
+(defcommand emacs () ()
+            (run-or-raise "emacsclient -c -a \"\"" '(:class "Emacs")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;Startup programs;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,7 +108,8 @@
 (run-shell-command "xrdb -load ~/etc/X11/Xdefaults -quiet")
   
 ;;Change the background and pointer in X
-(run-shell-command "xsetroot -cursor_name left_ptr -gray -fg darkgreen -bg black -name root-window")
+;; (run-shell-command 
+;;  "xsetroot -cursor_name left_ptr -gray -fg darkgreen -bg black -name root-window")
 
 ;;Always good to have a shell
 (run-shell-command "urxvt -e screen -xRR")
@@ -118,6 +136,8 @@
 
 ;;Allow short displays of shell output. Don't run GUI programs through this! Overrides default.
 ;(define-key *root-map* (kbd "!") "shell-command")
+
+(define-key *root-map* (kbd "dead_tilde") "shell-command")
 
 ;;Browse somewhere with the GUI WWW browser.
 (define-key *root-map* (kbd "b") (cat "colon " X-WWW-BROWSER " http://www."))
@@ -150,7 +170,7 @@
 
 ;;Make prtscreen work, as long as in command mode. "import" is an Imagemagick command.
 (define-key *root-map* (kbd "Print") "exec import -window root png:$HOME/xwd-$(date +%s)$$.png")
-   
+
 ;;'Swounds, I'm gonna need a separate section just for Surfraw shortcuts.
 ;;Anyway, the model for these (thanks to aon) is to bind a key to "colon exec surfraw wikipedia "
 ;;(or whatever the site is) note the space. If the space isn't there, then the user will need to
@@ -161,16 +181,16 @@
 ;;freshmeat google imdb rfc rhyme slashdot sourceforgen translate
    
 ;;Surfraw keybindings.
-(define-key *root-map* (kbd "t") "wikipedia")
+(define-key *root-map* (kbd "t") "invoke-surfraw wikipedia")
 (define-key *root-map* (kbd "T") "wikipedia-selection")
 
-(define-key *root-map* (kbd "g") "google ")
+(define-key *root-map* (kbd "g") "invoke-surfraw google")
 (define-key *root-map* (kbd "G") "google-selection")
 
-(define-key *root-map* (kbd "y") "wayback ")
+(define-key *root-map* (kbd "y") "invoke-surfraw wayback")
 (define-key *root-map* (kbd "Y") "wayback-selection")
 
-(define-key *root-map* (kbd "u") "debbugs ")
+(define-key *root-map* (kbd "u") "invoke-surfraw debbugs")
 (define-key *root-map* (kbd "U") "debpackages ")
    
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -19,7 +19,7 @@ janelas()
 {
     if [ "x$1" = "x" ]
 	then
-	    wm="dwm"
+	    wm="stumpwm"
     else
 	    wm="$1"
     fi
