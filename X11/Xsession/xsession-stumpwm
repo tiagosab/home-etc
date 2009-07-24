@@ -1,5 +1,8 @@
 xrdb ~/.Xdefaults
 
+# TS: From Xorg7.4 onwards, C-A-Del does not terminate X by default.
+setxkbmap -option terminate:ctrl_alt_bksp
+
 # TS: I do not use any more X bindings; I am doing it in
 # TS: stumpwm.
 # xbindkeys
