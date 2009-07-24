@@ -1,0 +1,277 @@
+
+[inpSearch]
+0=procmail
+
+[inpCreate a new Directory]
+0=Hegel
+
+[inp Save As ]
+0=sound
+1=sshd_config
+
+[start]
+0=.
+
+[name]
+0=*
+
+[content]
+0=cdDevice
+1=CdRoms
+2=Cdroms
+3=CDRoms
+4=queryItem
+
+[inp Parâmetro ]
+0=man
+
+[edit-replace]
+0=DEBLISTS
+
+[edit-search]
+0=LISTS
+
+[inp Ir Para o endereço ]
+0=0x9999
+1=0x99999
+2=0x999999
+3=0x500000
+
+[Search]
+0=cdDevice
+1=ce
+2=c8
+3=C8
+4=0x01 0x00 0x00 0x00
+5=0x01000000
+6=0x4F 0x25
+7=0x01 0x00
+8=0x00 0x00 0x01 0x00
+9=0xC8
+10=0x63
+11=AA
+12=0x41 0x41
+13=0xF
+14=\x9a
+15=\9a
+16=9a
+17=\X9A
+18=\x9A
+19=\x30
+20=\x09a
+21=\zce
+22=\xce
+23=\XCE
+24=\xCE
+25=CE
+26=xCE
+27=\Xce
+28=0xCE
+29=load
+30=FFI
+
+[inpProcurar]
+0=+++
+1=\+\+\+
+2=---
+3=antiword
+4=cd
+5=cdDevice
+6=filemenu
+7=nvidia
+8=FFI
+9=1307
+10=bin
+11=debian/rules
+
+[inp Selecionar ]
+0=*
+
+[inp Cancelar seleção ]
+0=*
+
+[input-def]
+0=*
+
+[input2]
+0=/home/tiago/home/mono
+1=/usr/share/doc/mini-dinstall/examples
+2=~
+3=/extra/multimedia/livros
+4=/extra/multimedia/Filmes/cocon
+5=/extra/multimedia/Filmes
+6=/extra/multimedia/audiobook
+7=/extra/vdisks/isos
+8=/extra/multimedia/rip
+9=/extra/multimedia/musica/Pablo Milanes/Discos
+10=/extra/multimedia/musica
+11=/extra/filmes/documenta
+12=myfile.zip
+13=/home/tiago/src/robert-py
+14=/home/tiago/src/robert-py/robert
+15=section2-partie3.zip
+16=/extra/multimedia/musica/NOVOS/Lucas
+17=/tmp
+
+[inpCriar um novo diretório]
+0=robert
+1=Lucas
+
+[user-fmt-input]
+0=half type name | size | perm
+1=half perm | type name | size
+
+[mini-input]
+0=half type name | size | perm
+1=half nlink:3 |owner:6 | group:6 | mtime
+
+[Dir Hist New Right Panel]
+0=/home/tiago/src/debian-packaging/omegat/building/omegat_1.8.0.1beta+dfsg-1_all.deb#deb/CONTENTS/usr/share/java
+1=/home/tiago/src/debian-packaging/omegat/building/omegat_1.8.0.1beta+dfsg-1_all.deb#deb/CONTENTS/usr/share/java/OmegaT.jar#uzip
+2=/home/tiago/src/debian-packaging/omegat/building/omegat_1.8.0.1beta+dfsg-1_all.deb#deb/CONTENTS/usr/share/java/OmegaT.jar#uzip/META-INF
+3=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/refs/remotes/tags
+4=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/refs/remotes
+5=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/refs/tags
+6=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/svn/trunk
+7=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/svn/tags/3.0.2
+8=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/svn/tags/3.0.1
+9=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/svn/tags
+10=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/svn
+11=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/refs/heads
+12=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/hooks
+13=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/info
+14=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/logs/refs/heads
+15=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/logs/refs/remotes/tags
+16=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/logs/refs/remotes
+17=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/logs/refs
+18=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/logs
+19=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/objects/0e
+20=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/objects/info
+21=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/objects/pack
+22=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/objects
+23=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git/refs
+24=/home/tiago/src/debian-packaging/jna/svn-git/jna/.git
+25=/usr/share/doc/classpath-doc
+26=/usr/share/doc/classpath-doc/api
+27=/usr/share/doc/classpath-doc/api/java
+28=/usr/share/doc/classpath-doc/api/java/lang
+29=/home/tiago/src/pymaemo/python-abook/trunk/abook
+30=/home/tiago/src/pymaemo/python-abook/trunk/abook/defs
+31=/extra/isos/windows/utils/Alcohol_120_v_1_9_8_7117/Alcohol.120.v1.9.8.7117.Retail/Alcohol.120.v1.9.8.7117.Retail/Alcohol Universal Loader
+32=/extra/isos/windows/utils/Alcohol_120_v_1_9_8_7117/Alcohol.120.v1.9.8.7117.Retail/Alcohol.120.v1.9.8.7117.Retail
+33=/extra/isos/windows/utils/Alcohol_120_v_1_9_8_7117/Alcohol.120.v1.9.8.7117.Retail
+34=/extra/isos/windows/utils/Alcohol_120_v_1_9_8_7117/Alcohol Universal Loader
+35=/extra/isos/windows/utils/Alcohol_120_v_1_9_8_7117
+36=/usr/local/src/debian-packages/xclip-0.08
+37=/tmp/Deleuze_srt
+38=/home/tiago/tmp/in/google-chrome-unstable_current_amd64.deb#deb/CONTENTS
+39=/home/tiago/tmp/in
+40=/home/tiago/tmp/in/google-chrome-unstable_current_amd64.deb#deb
+41=/home/tiago/tmp/in/google-chrome-unstable_current_amd64.deb#deb/DEBIAN
+42=/home/tiago/.beagle
+43=/home/tiago/home/aulasfran/alunos
+44=/home/tiago/home/aulasfran/baixados
+45=/home/tiago/home/aulasfran/certifications
+46=/home/tiago/home/aulasfran
+47=/home/tiago/home/aulasfran/exercices
+48=/home/tiago/home/aulasfran/exercices/delf-dalf/baixados/Delf B1 Junior
+49=/home/tiago/home/aulasfran/exercices/delf-dalf/baixados/Delf B1 CLE
+50=/home/tiago/home/aulasfran/exercices/delf-dalf/baixados/DELF Scolaire A1 B2
+51=/home/tiago/home/aulasfran/exercices/delf-dalf/baixados/DELF A2 CLE International - Audio updated-fixed 02-2008/DELF A2 CLE International - Audio
+52=/home/tiago/home/aulasfran/exercices/delf-dalf/baixados/DELF A2 CLE International - Audio updated-fixed 02-2008
+53=/home/tiago/home/aulasfran/exercices/delf-dalf
+54=/home/tiago/home/aulasfran/exercices/delf-dalf/baixados
+55=/home/tiago/home/aulasfran/exercices/delf-dalf/baixados/DALF C1,C2 CLE International - Audio updated-fixed 01-2008
+56=/home/tiago/etc/unasked
+57=/home/tiago
+58=/home/tiago/etc
+59=/home/tiago/etc/bash-interactive.d
+
+[cmdline]
+0=cd home
+1=man mailcap.order
+2=touch install
+3=ls
+4=cd /usr/local/src
+5=man mc
+6=cd ~/src/ro*
+7=cd ~/src
+8=ls -l
+9=ls -l ph
+10=ls -l 
+11=df
+12=cd /var/cache/pbuilder/result
+13=cd doc/libhtmlparser-java
+14=[21~
+15=CD
+16=cd src
+17=q
+18=cd /tmp
+19=touch ant.properties
+20=qqq
+21=file %s
+22=cd
+23=cd #apt
+24=di -h
+
+[Dir Hist New Left Panel]
+0=/home/tiago/src/debian-packaging/omegat/omegat-1.8.0.1beta+dfsg
+1=/home/tiago/src/debian-packaging/omegat/OmegaT_1.8.0_01_Beta_Source
+2=/home/tiago/src/debian-packaging/omegat
+3=/home/tiago/src/debian-packaging/omegat/omegat_1.8.0.1beta+dfsg.orig.tar.gz#utar
+4=/home/tiago/src/debian-packaging/omegat/omegat_1.8.0.1beta+dfsg.orig.tar.gz#utar/omegat-1.8.0.1_beta+dfsg
+5=/home/tiago/src/debian-packaging/omegat/omegat_1.8.0.1beta+dfsg.orig.tar.gz#utar/omegat-1.8.0.1_beta+dfsg/src
+6=/home/tiago/src/debian-packaging/omegat/omegat_1.8.0.1beta+dfsg.orig.tar.gz#utar/omegat-1.8.0.1_beta+dfsg/src/org
+7=/home/tiago/src/debian-packaging/omegat/omegat_1.8.0.1beta+dfsg.orig.tar.gz#utar/omegat-1.8.0.1_beta+dfsg/src/org/omegat
+8=/home/tiago/src/debian-packaging/omegat/omegat_1.8.0.1beta+dfsg.orig.tar.gz#utar/omegat-1.8.0.1_beta+dfsg/src/org/omegat/gui
+9=/home/tiago/src/debian-packaging/omegat/omegat_1.8.0.1beta+dfsg.orig.tar.gz#utar/omegat-1.8.0.1_beta+dfsg/src/org/omegat/gui/main
+10=/#ftp:ftp.debian.org
+11=/#ftp:ftp.debian.org/debian
+12=/#ftp:ftp.debian.org/debian/pool
+13=/#ftp:ftp.debian.org/debian/pool/main
+14=/#ftp:ftp.debian.org/debian/pool/main/l
+15=/#ftp:ftp.debian.org/debian/pool/main/l/linux-2.6.24
+16=/home/tiago/mnt/jna/libjna-java-3.0.2/build/jna.jar#uzip/com/sun/jna/examples
+17=/home/tiago/mnt/jna/libjna-java-3.0.2/build/jna.jar#uzip/com/sun/jna/ptr
+18=/home/tiago/mnt/jna/libjna-java-3.0.2/build/jna.jar#uzip/com/sun/jna/win32
+19=/home/tiago/mnt/jna/libjna-java-3.0.2/build/linux-i386.jar#uzip
+20=/home/tiago/mnt/jna/libjna-java-3.0.2/build/jna.jar#uzip/com/sun/jna
+21=/home/tiago/mnt/jna/libjna-java-3.0.2/build/jna.jar#uzip/com/sun
+22=/home/tiago/mnt/jna/libjna-java-3.0.2/build/jna.jar#uzip/com
+23=/home/tiago/mnt/jna/libjna-java-3.0.2/build/jna.jar#uzip
+24=/home/tiago/mnt/jna/libjna-java-3.0.2/build/test-classes/com/sun
+25=/home/tiago/mnt/jna/libjna-java-3.0.2/build/test-classes/com
+26=/home/tiago/mnt/jna/libjna-java-3.0.2/build/test-classes
+27=/home/tiago/mnt/jna/libjna-java-3.0.2/src/com/sun/jna
+28=/home/tiago/mnt/jna/libjna-java-3.0.2/src/com/sun
+29=/home/tiago/mnt/jna/libjna-java-3.0.2/src/com
+30=/home/tiago/mnt/jna/libjna-java-3.0.2/src
+31=/home/tiago/mnt/jna/libjna-java-3.0.2/native
+32=/home/tiago/mnt/jna/libjna-java-3.0.2/.settings
+33=/home/tiago/mnt/jna/libjna-java-3.0.2/build
+34=/home/tiago/mnt/jna/libjna-java-3.0.2/contrib
+35=/home/tiago/mnt/jna/jna-3.0.2
+36=/home/tiago/mnt
+37=/home/tiago/mnt/jna/building/libjna-java-3.0.2/build.eclipse
+38=/home/tiago/mnt/jna/building/libjna-java-3.0.2/contrib
+39=/home/tiago/mnt/jna/building/libjna-java-3.0.2/debian/patches
+40=/home/tiago/mnt/jna/building/libjna-java-3.0.2/debian
+41=/home/tiago/mnt/jna/building/libjna-java-3.0.2
+42=/home/tiago/mnt/jna/building
+43=/home/tiago/mnt/jna
+44=/home/tiago/mnt/jna/libjna-java-3.0.2
+45=/home/tiago/mnt/jna/libjna-java-3.0.2/debian
+46=/home/tiago/src/debian-packaging/jna/building/libjna-java-3.0.2/debian
+47=/home/tiago/etc
+48=/home/tiago/etc/unasked
+49=/home/tiago/bin
+50=/Walt Disney
+51=/home/tiago/etc/bash-interactive.d/#apt
+52=/home/tiago/etc/bash-interactive.d
+53=/home/tiago/#apt/all
+54=/home/tiago/#apt
+55=/home/tiago
+56=/
+57=/home
+58=/tmp
+59=/tmp/senha.zip#uzip
