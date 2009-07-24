@@ -10,6 +10,8 @@ set editor='emacsclient.emacs-snapshot -nw'
 set print_command="muttprint"
 set folder=~/Mail
 
+set rfc2047_parameters
+
 set sendmail="/usr/sbin/sendmail -oem -oi -C ${HOME}/etc/sensible-data/esmtprc"
 
 mailboxes /home/tiago/Mail/incoming \
