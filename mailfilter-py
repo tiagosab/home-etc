@@ -1,0 +1,10 @@
+# -*- mode: python -*-
+# 
+
+# mails to news@ulm.ccc.de must go to ml/news-ulm-ccc-de
+# triggers on 'List-Id: CCC Ulm - News Liste <news.ulm.ccc.de>'
+@filter("List-Id", "(.*)$")
+@filter("List-Id", "[^<]*<([^>]+)>")
+@filter("List-Post", "<mailto:(.+)>")
+def mailinglists(mo):
+    return "ml/" + esc(mo.group(1))

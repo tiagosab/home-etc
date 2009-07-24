@@ -1,0 +1,24 @@
+MAILDIR=$HOME/Email
+MHAILDIR=$HOME/Mhail
+DEFAULT=$MAILDIR/incoming
+LOGFILE=$HOME/var/log/procmail.log
+STORE=/usr/lib/mh/rcvstore
+LOCKEXT=.lock
+
+:0fw
+| mailfilter.py
+
+:0 H
+* X-Mailfiter-Discard:
+/dev/null
+
+:0 cH
+* X-Mailfilter-Mailbox: \/.*
+| $STORE +$MATCH
+
+:0 H :$MHAILDIR/$LOCKEXT
+* X-Mailfilter-Mailbox: \/.*
+$MATCH
+
+:0 c
+| $STORE +inbox
