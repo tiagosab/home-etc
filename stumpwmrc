@@ -91,6 +91,14 @@
 (defcommand emacs () ()
             (run-or-raise "emacsclient -c -a \"\"" '(:class "Emacs")))
 
+(defcommand conkeror () ()
+            (run-or-raise "conkeror" '(:class "Conkeror")))
+
+(defcommand screen () ()
+            (run-or-raise "urxvt -title screen-session -e screen -xRR" 
+                          '(:title "screen-session")))
+            ;(run-or-raise "urxvt" '(:class "scn")))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;Startup programs;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -106,13 +114,14 @@
   
 ;; Load X resources.
 (run-shell-command "xrdb -load ~/etc/X11/Xdefaults -quiet")
-  
+
+
 ;;Change the background and pointer in X
 ;; (run-shell-command 
 ;;  "xsetroot -cursor_name left_ptr -gray -fg darkgreen -bg black -name root-window")
 
-;;Always good to have a shell
-(run-shell-command "urxvt -e screen -xRR")
+;;Always good to have a shell - screen command is defined above.
+(screen)
   
 ;;Run unclutter so the mouse hangs around no longer than needed.
 (run-shell-command "unclutter -idle 1 -jitter 2 -root")
@@ -130,7 +139,11 @@
 ;;When not in Stumpwm mode, we want Insert to be bound to enter Stumpwm mode
 (define-key *top-map* (kbd "Insert") '*root-map*)
 (define-key *root-map* (kbd "Insert") "next") ;;When in Stumpwm mode, act like hitting the prefix again would.
-   
+
+(define-key *top-map* (kbd "kana_NA") "emacs")
+(define-key *top-map* (kbd "kana_NE") "conkeror")
+(define-key *top-map* (kbd "kana_NI") "screen")
+
 ;;You remember what run-top did, don't you? Defined in the functions section.
 (define-key *root-map* (kbd "&") "run-top")
 
@@ -142,6 +155,9 @@
 ;;Browse somewhere with the GUI WWW browser.
 (define-key *root-map* (kbd "b") (cat "colon " X-WWW-BROWSER " http://www."))
 (define-key *root-map* (kbd "B") "open-selection-browser")
+
+;;open conkeror browser
+(define-key *root-map* (kbd "/") "conkeror")
 
 ;;SSH somewhere in the default terminal.
 ;(define-key *root-map* (kbd "C-s") (cat "colon " X-TERM " -e ssh "))
