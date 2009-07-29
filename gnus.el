@@ -1,5 +1,10 @@
-;; main method for gnus to retrieve news. why do this need to be nnnil?
-(setq gnus-select-method '(nnnil ""))
+;; main method for gnus to retrieve news.
+;; why do this need to be nnnil if I do not want to use news?
+;; can't I just put mail as primary method?
+;; And if I want to access both gmane and sunsite.dk,
+;; which one should be primary and which secondary?
+;(setq gnus-select-method '(nntp "news.gmane.org"))
+(setq gnus-select-method '(nnnil))
 
 ;; Mail is kept by gnus in ~/Gnumail directory. Why is this my
 ;; "secondary" method?
@@ -56,6 +61,11 @@
 (setq gnus-group-line-format
       "%M%S%5y:%B%(%g%)\n") ; default
       ;"%M%S%L%N/%I/%R/%U/%t:%B%(%g%)\n")
+
+;; retrieve old messages to present entire threads
+;; disabled; takes too long on news servers and clutters the Summary buffer. 
+;; Use "A T" or "^" instead.
+(setq gnus-fetch-old-headers nil)
 
 ;; This is recommended by some to make gnus completely ignore news,
 ;; and work only with mail. But it works perfectly without those
