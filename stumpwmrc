@@ -1,4 +1,4 @@
-;; -*- lisp -*-
+;; -*- mode:lisp; mode:stumpwm -*-
 ;; ~/.stumpwmrc
 
 (in-package :stumpwm)
@@ -110,10 +110,13 @@
 
 ;;Do some key re-mapping; it is crucial that this get run first, because otherwise
 ;;the remapping later on of Insert and less to the prefix key simply will not work.
-;(run-shell-command "xmodmap -quiet ~/.Xmodmap")
-  
+(run-shell-command "xmodmap -quiet ~/etc/xmodmaprc")
+
 ;; Load X resources.
 (run-shell-command "xrdb -load ~/etc/X11/Xdefaults -quiet")
+
+;; Run conkeror daemon.
+(run-shell-command "conkeror -daemon")
 
 
 ;;Change the background and pointer in X
@@ -122,9 +125,11 @@
 
 ;;Always good to have a shell - screen command is defined above.
 (screen)
-  
+
 ;;Run unclutter so the mouse hangs around no longer than needed.
 (run-shell-command "unclutter -idle 1 -jitter 2 -root")
+(setf *mouse-focus-policy* :click) ;; :click, :ignore, :sloppy
+
    
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;Key binding;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
