@@ -1,0 +1,5 @@
+# m     h dom mon dow   command
+*/60    *  *   *   *    r2e run
+5-55/10 *  *   *   *    fetchmail -s -f "/home/tiago/etc/sensible-data/fetchmailrc"
+*/10    *  *   *   *    fetchmail -s -f "/home/tiago/etc/sensible-data/fetchothermailrc"
+03     */2 *   *   *    $HOME/bin/check-home-available-space.sh

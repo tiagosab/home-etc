@@ -12,13 +12,21 @@
       '((nnml "Gnumail"
               (nnml-directory "/home/tiago/Gnumail")
               (nnml-active-file "/home/tiago/Gnumail/active"))))
+;        (nntp "news.sunsite.dk")))
+;        (nntp "news.eternal-september.org")))
+
+;; nntp method will look in this for authentication information
+;; (username and password)
+(setq nntp-authinfo-file
+      "/home/tiago/etc/sensible-data/gnus-nntp-authinfo")
 
 ;; Mail is delivered locally (fetchmail + procmail + mailfilter.py) in
 ;; ~/Email/incoming and in ~/Email/ml/*.
 (setq mail-sources
       '((file :path "/home/tiago/Email/incoming")
         (directory :path "/home/tiago/Email/ml"
-                   :suffix "")))
+                   :suffix "")
+        (file :path "/var/mail/tiago")))
 
 ;; After procmail/mailfilter.py disposes of all mailing list mails,
 ;; gnus stil has some work to do to split mail in further groups.
@@ -26,8 +34,12 @@
       '(("system" "^From:.*Cron Daemon.*")
         ("virginia" "^From:.*Virg.nia.*Fontes.*")
         ("das-welt" "^From:.*WELT ONLINE.*")
-        ("herio" "^From:.*(hsab|herio).*")
+        ("herio" "^From:.*\\(hsab\\|herio\\|hersab\\).*")
         ("google" "^From:.*noreply@google.com.*")
+        ("Economist" "^From: \"The Economist: .*")
+        ("NYT" "^From:.*NYT > .*")
+        ("paulinho" "^From:.*Paulo Roberto Sabino.*")
+        ("devulsky" "^From:.*Devulsky.*")
         ("facebook" "^From:.*Facebook.*")
         ("incoming" "")))
 
@@ -66,6 +78,17 @@
 ;; disabled; takes too long on news servers and clutters the Summary buffer. 
 ;; Use "A T" or "^" instead.
 (setq gnus-fetch-old-headers nil)
+
+(setq gnus-parameters
+      '(("nnml:debian\\.\\(.*\\)$"
+         (to-address . "debian-\\1@lists.debian.org")
+         (to-list . "debian-\\1@lists.debian.org")
+         (subscribed . t))))
+
+;; according to the gnus manual, this is the second step to do the
+;; right thing when replying to lists
+(setq message-subscribed-address-functions
+      '(gnus-find-subscribed-addresses))
 
 ;; This is recommended by some to make gnus completely ignore news,
 ;; and work only with mail. But it works perfectly without those

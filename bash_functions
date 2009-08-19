@@ -66,3 +66,9 @@ dic()
 {
     dict $@ | less
 }
+
+mkcd()
+{
+    mkdir -p "$1" 2>/dev/null
+    cd "$1"
+}

@@ -8,7 +8,7 @@ shopt -s checkwinsize
 
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/bin ] ; then
-    PATH=~/bin:"${PATH}"
+    PATH=~/bin:~/src/pyti/scripts:"${PATH}"
 fi
 
 # enable programmable completion features (you don't need to enable
