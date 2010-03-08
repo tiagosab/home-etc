@@ -90,6 +90,11 @@
 (setq message-subscribed-address-functions
       '(gnus-find-subscribed-addresses))
 
+
+;; Use group topics
+;; (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+;; (setq gnus-topic
+
 ;; This is recommended by some to make gnus completely ignore news,
 ;; and work only with mail. But it works perfectly without those
 ;; lines.
