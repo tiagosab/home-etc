@@ -12,4 +12,4 @@
 # for internal lesspipe
 export LESSOPEN="| /usr/bin/lesspipe %s";
 export LESSCLOSE="/usr/bin/lesspipe %s %s";
-export LESS='--RAW-CONTROL-CHARS -M --tabs=4'
+export LESS='-i --RAW-CONTROL-CHARS -M --tabs=4'

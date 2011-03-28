@@ -1,5 +1,21 @@
 keycode 222 = kana_NA
 keycode 223 = kana_NE
 keycode 227 = kana_NI
-
-
+keycode 236 = Henkan_Mode
+! Henkan           
+! Romaji           
+! Hiragana         
+! Katakana         
+! Hiragana_Katakanagle
+! Zenkaku          
+! Hankaku          
+! Zenkaku_Hankaku
+! Touroku          
+! Massyo         
+! Kana_Lock        
+! Kana_Shift       
+! Eisu_Shift       
+! Eisu_toggle    
+! Kanji_Bangou     
+! Zen_Koho       
+! Mae_Koho         

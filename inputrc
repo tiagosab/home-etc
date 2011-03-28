@@ -3,3 +3,4 @@
 set show-all-if-ambiguous on
 set visible-stats on
 set bell-style visible
+# "\C-j": "|less\C-m"

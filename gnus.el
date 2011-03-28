@@ -8,10 +8,17 @@
 
 ;; Mail is kept by gnus in ~/Gnumail directory. Why is this my
 ;; "secondary" method?
+;; (setq gnus-secondary-select-methods
+;;       '((nnml "Gnumail"
+;;               (nnml-directory "/home/tiago/Gnumail")
+;;               (nnml-active-file "/home/tiago/Gnumail/active"))))
+
 (setq gnus-secondary-select-methods
-      '((nnml "Gnumail"
-              (nnml-directory "/home/tiago/Gnumail")
-              (nnml-active-file "/home/tiago/Gnumail/active"))))
+      '((nnimap "gmail"
+                (nnimap-address "imap.gmail.com")
+                (nnimap-server-port 993)
+                (nnimap-stream ssl))))
+
 ;        (nntp "news.sunsite.dk")))
 ;        (nntp "news.eternal-september.org")))
 
@@ -22,26 +29,26 @@
 
 ;; Mail is delivered locally (fetchmail + procmail + mailfilter.py) in
 ;; ~/Email/incoming and in ~/Email/ml/*.
-(setq mail-sources
-      '((file :path "/home/tiago/Email/incoming")
-        (directory :path "/home/tiago/Email/ml"
-                   :suffix "")
-        (file :path "/var/mail/tiago")))
+;; (setq mail-sources
+;;       '((file :path "/home/tiago/Email/incoming")
+;;         (directory :path "/home/tiago/Email/ml"
+;;                    :suffix "")
+;;         (file :path "/var/mail/tiago")))
 
-;; After procmail/mailfilter.py disposes of all mailing list mails,
-;; gnus stil has some work to do to split mail in further groups.
-(setq nnmail-split-methods
-      '(("system" "^From:.*Cron Daemon.*")
-        ("virginia" "^From:.*Virg.nia.*Fontes.*")
-        ("das-welt" "^From:.*WELT ONLINE.*")
-        ("herio" "^From:.*\\(hsab\\|herio\\|hersab\\).*")
-        ("google" "^From:.*noreply@google.com.*")
-        ("Economist" "^From: \"The Economist: .*")
-        ("NYT" "^From:.*NYT > .*")
-        ("paulinho" "^From:.*Paulo Roberto Sabino.*")
-        ("devulsky" "^From:.*Devulsky.*")
-        ("facebook" "^From:.*Facebook.*")
-        ("incoming" "")))
+;; ;; After procmail/mailfilter.py disposes of all mailing list mails,
+;; ;; gnus stil has some work to do to split mail in further groups.
+;; (setq nnmail-split-methods
+;;       '(("system" "^From:.*Cron Daemon.*")
+;;         ("virginia" "^From:.*Virg.nia.*Fontes.*")
+;;         ("das-welt" "^From:.*WELT ONLINE.*")
+;;         ("herio" "^From:.*\\(hsab\\|herio\\|hersab\\).*")
+;;         ("google" "^From:.*noreply@google.com.*")
+;;         ("Economist" "^From: \"The Economist: .*")
+;;         ("NYT" "^From:.*NYT > .*")
+;;         ("paulinho" "^From:.*Paulo Roberto Sabino.*")
+;;         ("devulsky" "^From:.*Devulsky.*")
+;;         ("facebook" "^From:.*Facebook.*")
+;;         ("incoming" "")))
 
 ;; sent messages should be archived separately in some groups
 ;; (apparently this is not working).
@@ -103,3 +110,5 @@
 ;;       gnus-save-newsrc-file nil
 ;;       gnus-read-newsrc-file nil
 ;;       gnus-check-new-newsgroups nil)
+
+(setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. 	]+\\( \\|$\\)\\|^[\"]\"[#'()]")

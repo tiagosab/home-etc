@@ -88,11 +88,17 @@
 (defcommand run-top () ()
             (shell-command "top -b -n 1 -c -d 1"))
 
+(defcommand shutdown () ()
+            (shell-command "sudo shutdown -h now"))
+
 (defcommand emacs () ()
-            (run-or-raise "emacsclient -c -a \"\"" '(:class "Emacs")))
+            (run-or-raise "emacsclient -n -c -a \"\"" '(:class "Emacs")))
 
 (defcommand conkeror () ()
             (run-or-raise "conkeror" '(:class "Conkeror")))
+
+(defcommand iceweasel () ()
+            (run-or-raise "iceweasel" '(:class "Firefox")))
 
 (defcommand screen () ()
             (run-or-raise "urxvt -title screen-session -e screen -xRR" 
@@ -113,7 +119,7 @@
 (run-shell-command "xmodmap -quiet ~/etc/xmodmaprc")
 
 ;; Load X resources.
-(run-shell-command "xrdb -load ~/etc/X11/Xdefaults -quiet")
+; (run-shell-command "/home/tiago/bin/loadxrdb")
 
 ;; Run conkeror daemon.
 (run-shell-command "conkeror -daemon")
@@ -145,9 +151,18 @@
 (define-key *top-map* (kbd "Insert") '*root-map*)
 (define-key *root-map* (kbd "Insert") "next") ;;When in Stumpwm mode, act like hitting the prefix again would.
 
-(define-key *top-map* (kbd "kana_NA") "emacs")
-(define-key *top-map* (kbd "kana_NE") "conkeror")
-(define-key *top-map* (kbd "kana_NI") "screen")
+; for keyboards with power, sleep, wake buttons
+;; (define-key *top-map* (kbd "XF86PowerOff") "emacs")
+;; (define-key *top-map* (kbd "XF86Sleep") "conkeror")
+;; (define-key *top-map* (kbd "XF86WakeUp") "screen")
+
+(define-key *top-map* (kbd "XF86Mail") "emacs")
+(define-key *top-map* (kbd "XF86HomePage") "conkeror")
+(define-key *top-map* (kbd "XF86Favorites") "screen")
+
+(define-key *top-map* (kbd "XF86Documents") "pull-hidden-next")
+(define-key *top-map* (kbd "XF86AudioMedia") "pull-hidden-previous")
+(define-key *root-map* (kbd "RET") "screen")
 
 ;;You remember what run-top did, don't you? Defined in the functions section.
 (define-key *root-map* (kbd "&") "run-top")
@@ -163,6 +178,8 @@
 
 ;;open conkeror browser
 (define-key *root-map* (kbd "/") "conkeror")
+
+(define-key *root-map* (kbd "]") "iceweasel")
 
 ;;SSH somewhere in the default terminal.
 ;(define-key *root-map* (kbd "C-s") (cat "colon " X-TERM " -e ssh "))

@@ -5,4 +5,4 @@
 #
 # Start emacs if not done.
 
-emacsclient -e '(message "Contacting home.")' -a '' 2>/dev/null 1>&2
+emacsclient -e '(message "Contacting home.")' -a '' 2>/dev/null 1>&2 &

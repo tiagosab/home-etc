@@ -1,4 +1,4 @@
-xrdb ~/.Xdefaults
+loadxrdb
 
 # TS: From Xorg7.4 onwards, C-A-Del does not terminate X by default.
 setxkbmap -option terminate:ctrl_alt_bksp
@@ -7,8 +7,11 @@ setxkbmap -option terminate:ctrl_alt_bksp
 # TS: stumpwm.
 # xbindkeys
 
-if [ $1 = "-n"
+if [ $1 ] = "-n"
 	then
 	exit 23
 fi
+
+setterm -blank 0 -powersave off
+#export LISP=sbcl
 exec stumpwm

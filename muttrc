@@ -8,25 +8,36 @@ set use_envelope_from
 
 set editor='emacsclient.emacs-snapshot -nw'
 set print_command="muttprint"
-set folder=~/Mail
+# set folder=~/Mail
 
 set rfc2047_parameters
 
 set sendmail="/usr/sbin/sendmail -oem -oi -C ${HOME}/etc/sensible-data/esmtprc"
 
-mailboxes /home/tiago/Mail/incoming \
-                 `find /home/tiago/Mail/deblists -mindepth 1 -maxdepth 1 -type d -print0 \
-                 | xargs -0 echo` \
-		 `find /home/tiago/Mail/listas -mindepth 1 -maxdepth 1 -type d -print0 \
-                 | xargs -0 echo` \
-		 `find /home/tiago/Mail/omegat-lists -mindepth 1 -maxdepth 1 -print0 \
-		 | xargs -0 echo` \
-		 `find /home/tiago/Mail/shazam -mindepth 1 -maxdepth 1 -print0 \
-		 | xargs -0 echo` \
-         `find /home/tiago/Mail/jna -mindepth 1 -maxdepth 1 -print0 \
-         | xargs -0 echo` \
-		 /home/tiago/Mail/spam/spam-inbox \
-		 /home/tiago/Mail/yahoo
+# mailboxes /home/tiago/Mail/incoming \
+#                  `find /home/tiago/Mail/deblists -mindepth 1 -maxdepth 1 -type d -print0 \
+#                  | xargs -0 echo` \
+# 		 `find /home/tiago/Mail/listas -mindepth 1 -maxdepth 1 -type d -print0 \
+#                  | xargs -0 echo` \
+# 		 `find /home/tiago/Mail/omegat-lists -mindepth 1 -maxdepth 1 -print0 \
+# 		 | xargs -0 echo` \
+# 		 `find /home/tiago/Mail/shazam -mindepth 1 -maxdepth 1 -print0 \
+# 		 | xargs -0 echo` \
+#          `find /home/tiago/Mail/jna -mindepth 1 -maxdepth 1 -print0 \
+#          | xargs -0 echo` \
+# 		 /home/tiago/Mail/spam/spam-inbox \
+# 		 /home/tiago/Mail/yahoo
+set imap_user="tiagosaboga@gmail.com"
+# mailboxes imaps://imap.gmail.com:993
+set folder="imaps://imap.gmail.com:993"
+set spoolfile="+INBOX"
+set postponed="+[Gmail]/Drafts"
+#set trash="imaps://imap.gmail.com/[Gmail]/Trash"
+set imap_check_subscribed
+
+set header_cache = ~/var/cache/mutt/headers
+set message_cachedir = ~/var/cache/mutt/bodies
+set certificate_file = ~/var/certificates/mutt
 
 set index_format="%4C %Z %{%b %d} %-15.15F (%?l?%4l&%4c?) %s"
 

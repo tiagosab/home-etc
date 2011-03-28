@@ -74,6 +74,24 @@ editor_backup_extension=~
 editor_visible_tabs=1
 editor_visible_spaces=1
 
+mouse_close_dialog=0
+skip_check_codeset=0
+editor_persistent_selections=1
+editor_line_state=0
+editor_simple_statusbar=0
+auto_fill_mkdir_name=1
+
+kilobyte_si=0
+ftpfs_use_passive_connections_over_proxy=0
+editor_cursor_beyond_eol=0
+editor_check_new_line=0
+reverse_files_only=1
+copymove_persistent_attr=1
+select_flags=6
+skin=default
+keymap=mc.keymap
+auto_save_setup_panels=1
+
 [Layout]
 equal_split=1
 first_panel_size=16
@@ -86,6 +104,8 @@ menubar_visible=0
 show_mini_info=1
 permission_mode=0
 filetype_mode=1
+
+free_space=1
 
 [Dirs]
 other_dir=/home/tiago/etc/bash-interactive.d
@@ -105,21 +125,6 @@ user_status3=half nlink:3 |owner:6 | group:6 | mtime
 user_mini_status=1
 panel_display_codepage=Other_8_bit
 
-[New Right Panel]
-display=listing
-reverse=0
-case_sensitive=1
-sort_order=name
-list_mode=user
-user_format=perm | type name | size
-user_status0=half type name | size | perm
-user_status1=half type name | size | perm
-user_status2=half type name | size | perm
-user_status3=half nlink:3 | owner:6 | group:6 | mtime
-user_mini_status=1
-panel_display_codepage=Other_8_bit
-
-[New Left Panel]
 # display=listing
 # reverse=0
 # case_sensitive=1
@@ -148,6 +153,19 @@ user_mini_status=1
 panel_display_codepage=Other_8_bit
 
 [New Right Panel]
+display=listing
+reverse=0
+case_sensitive=1
+sort_order=name
+list_mode=user
+user_format=perm | type name | size
+user_status0=half type name | size | perm
+user_status1=half type name | size | perm
+user_status2=half type name | size | perm
+user_status3=half nlink:3 | owner:6 | group:6 | mtime
+user_mini_status=1
+panel_display_codepage=Other_8_bit
+
 # display=listing
 # reverse=0
 # case_sensitive=1
@@ -178,14 +196,22 @@ panel_display_codepage=Other_8_bit
 [Misc]
 ftpfs_password=anonymous@
 ftp_proxy_host=gate
-display_codepage=Other_8_bit
+display_codepage=UTF-8
 ftp_codepage=Other_8_bit
+
+find_ignore_dirs=
+source_codepage=UTF-8
 
 [Colors]
 base_color=,black:normal=,black:selected=black,cyan:marked=,black:markselect=yellow,cyan:errors=white,red:menu=white,cyan:reverse=black,lightgray:dnormal=black,lightgray:dfocus=black,cyan:dhotnormal=blue,lightgray:dhotfocus=blue,cyan:viewunderline=,black:menuhot=yellow,cyan:menusel=white,black:menuhotsel=yellow,black:helpnormal=black,lightgray:helpitalic=red,lightgray:helpbold=blue,lightgray:helplink=black,cyan:helpslink=yellow,blue:gauge=white,black:input=black,cyan:directory=white,black:executable=green,black:link=gray,black:stalelink=brightred,blue:device=,black:core=red,blue:special=red,black:editnormal=lightgray,black:editbold=yellow,blue:editmarked=black,cyan:errdhotnormal=yellow,red:errdhotfocus=yellow,lightgray
 # base_color=lightgray,blue:normal=lightgray,blue:selected=black,cyan:marked=yellow,blue:markselect=yellow,cyan:errors=white,red:menu=white,cyan:reverse=black,lightgray:dnormal=black,lightgray:dfocus=black,cyan:dhotnormal=blue,lightgray:dhotfocus=blue,cyan:viewunderline=brightred,blue:menuhot=yellow,cyan:menusel=white,black:menuhotsel=yellow,black:helpnormal=black,lightgray:helpitalic=red,lightgray:helpbold=blue,lightgray:helplink=black,cyan:helpslink=yellow,blue:gauge=white,black:input=black,cyan:directory=white,blue:executable=brightgreen,blue:link=lightgray,blue:stalelink=brightred,blue:device=brightmagenta,blue:core=red,blue:special=black,blue:editnormal=lightgray,blue:editbold=yellow,blue:editmarked=black,cyan:errdhotnormal=yellow,red:errdhotfocus=yellow,lightgray
 
+screen=
+color_terminals=
+
+xterm=
+
 [Panelize]
-Find *.orig after patching=find . -name \*.orig -print
-Find SUID and SGID programs=find . \( \( -perm -04000 -a -perm +011 \) -o \( -perm -02000 -a -perm +01 \) \) -print
-Find rejects after patching=find . -name \*.rej -print
+Find *.orig after patching=find . -name \\*.orig -print
+Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm +011 \\) -o \\( -perm -02000 -a -perm +01 \\) \\) -print
+Find rejects after patching=find . -name \\*.rej -print

@@ -1,0 +1,20 @@
+!UXTerm*font:FONT
+!10x20
+!XTerm*font:FONT
+UXTerm*saveLines:1500
+URxvt.font:FONTJ
+!10x20
+URxvt*saveLines:1500 
+URxvt*background:black
+URxvt*foreground:white
+URxvt*scrollBar:False
+URxvt*boldFont:
+URxvt*boldItalicFont:
+URxvt*fading:30
+URxvt*scrollTtyOutput:off
+
+!URxvt.vt100.translations: #override \n\
+
+xterm*vt100.tranlations: #override \n\
+  Shift <Key>Prior:string(0x1b) string("[5;2~") \n\
+  Shift <Key>Next:string(0x1b) string("[6;2~")

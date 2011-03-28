@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding= utf8 -*-
+# -*- coding: utf-8 -*-
 
 # Copyright (C) @YEAR@ Tiago Saboga <tiagosaboga@gmail.com>
 # This program is free software; you can redistribute it and/or modify
