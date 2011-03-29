@@ -1,8 +1,13 @@
 #   ---*--- HISTORY ---*---
 # don't put duplicate lines and lines beginning with space in the history. See bash(1) for more options
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoredups:erasedups:ignorespace
 # don't put these commands in history
 export HISTIGNORE=exit:ls:[bf]g
-export HISTSIZE=10000
-export HISTFILESIZE=10000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+export HISTFILE=/home/tiago/var/lib/bash_history
 shopt -s histappend
+shopt -s histreedit
+shopt -s histverify
+
+export TS_HIST_COMMAND="history -a; history -c; history -r"
