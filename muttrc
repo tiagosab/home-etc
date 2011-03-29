@@ -12,7 +12,9 @@ set print_command="muttprint"
 
 set rfc2047_parameters
 
-set sendmail="/usr/sbin/sendmail -oem -oi -C ${HOME}/etc/sensible-data/esmtprc"
+set pgp_use_gpg_agent=yes
+
+set sendmail="/usr/sbin/sendmail -oem -oi"
 
 # mailboxes /home/tiago/Mail/incoming \
 #                  `find /home/tiago/Mail/deblists -mindepth 1 -maxdepth 1 -type d -print0 \
