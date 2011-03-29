@@ -9,31 +9,31 @@
 
 etcpath="${HOME}/etc"
 
+interactive=$(echo $- | grep -vc i)
+
+if [ $interactive -eq 0 ];
+    then
+    echo "$0: Interactive session. Turning on output."
+fi
+
 ts-source-parts ()
 {
     local files
-    files=$(find "$1" -regextype grep -iregex '.*/[0-9]\{2\}[a-z]\+$' |\
+    files=$(find "$1" -regextype grep -type f -iregex '.*/[0-9]\{2\}[a-z]\+$' |\
     sort -df)
     for f in $files; do
-        test -r "$f" && echo "$f" && . "$f"
+        test -r "$f" && \
+            if [ $interactive -eq 0 ] ; then echo "$f"; fi && \
+            . "$f"
     done
 }
 
-
 sourcedir="${etcpath}/bash.d"
 ts-source-parts "${sourcedir}"
-# for file in "$sourcedir/"* ; do
-# #    echo "$file"
-#     test -r "$file" && . "$file"
-# done
 
 interactivedir="${etcpath}/bash-interactive.d"
-if [ "$(echo $- | grep -vc i)" == 0 ] ; then
+if [ $interactive -eq 0 ]; then
     ts-source-parts "${interactivedir}"
-    # for file in "${interactivedir}/"*; do
-    #     echo "$file"
-    #     test -r "$file" && . "$file"
-    # done
 fi
 
 [[ -f "/home/tiago/.config/autopackage/paths-bash" ]] && . "/home/tiago/.config/autopackage/paths-bash"

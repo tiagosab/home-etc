@@ -1,3 +1,4 @@
+# -*- mode:shell-script; -*-
 #   ---*--- GPG/SSH ---*---
 
 function gpg-add {
@@ -5,13 +6,12 @@ function gpg-add {
         echo "Sucesso."
 }
 
-
 GPG_INFO="$HOME/var/run/gpg-agent-info"
 export GPG_TTY=$(tty)
 
 function start_gpg_agent {
      echo "Initialising GPG agent..."
-     /usr/bin/gpg-agent --daemon --enable-ssh-support \
+     /usr/bin/gpg-agent --daemon \
                         --write-env-file "${GPG_INFO}" > /dev/null
      chmod 600 "${GPG_INFO}"
      set -a
@@ -21,10 +21,12 @@ function start_gpg_agent {
 
 # Source GPG settings, if applicable
 if [ -f "${GPG_INFO}" ]; then
-     . "${GPG_INFO}" > /dev/null
-     gpg-agent 2>/dev/null || {
-         start_gpg_agent;
-     }
+    set -a
+    . "${GPG_INFO}" > /dev/null
+    set +a
+    timeout 2 gpg-agent 2>/dev/null || {
+        start_gpg_agent;
+    }
 else
      start_gpg_agent;
 fi 
