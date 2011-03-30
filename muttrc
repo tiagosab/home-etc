@@ -55,7 +55,7 @@ subscribe pkg-java-maintainers
 subscribe users@jna
 subscribe dev@jna
 
-my_hdr Bcc: tiagosaboga@gmail.com
+# my_hdr Bcc: tiagosaboga@gmail.com
 
 # auto_view text/html
 
