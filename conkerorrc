@@ -1,3 +1,5 @@
+// -*- mode:javascript -*-
+
 add_delicious_webjumps ("tiagosab");
 url_remoting_fn=load_url_in_new_buffer;
 define_webjump("t", "http://www.cnrtl.fr/definition/%s");
@@ -140,10 +142,10 @@ define_key(content_buffer_normal_keymap, "H", "find-url-from-history");
 //session_pref ("font.minimum-size.x-western", 18);
 function my_zoom_set (buffer) {
     call_after_timeout(function () {
-        browser_zoom_set(buffer, false, 200);
+        browser_zoom_set(buffer, true, 160);
     }, 0);
 }
-//add_hook('create_buffer_hook', my_zoom_set);
+add_hook('create_buffer_hook', my_zoom_set);
 //END TS
 
 // //TS 2011-03-29 disable scrollbars
@@ -175,3 +177,21 @@ function my_zoom_set (buffer) {
 //    old_isearch_session_destroy.call(this);
 // };
 // //END TS
+
+//TS 2011-03-29: From herio
+interactive("colors-toggle", "toggle between document and forced colors",
+            function (I) {
+              var p = "browser.display.use_document_colors";
+              if (get_pref(p))
+                session_pref(p, false);
+                else session_pref(p, true);
+            });
+define_key(content_buffer_normal_keymap, "f6", "colors-toggle");
+
+//user_pref("browser.anchor_color", "#F0FFFF");
+//user_pref("browser.active_color", "#EE0000");
+//user_pref("browser.display.background_color", "#000030");
+//user_pref("browser.display.foreground_color", "#F0F0F0");
+//user_pref("browser.display.use_document_colors", true);
+//user_pref("browser.visited_color", "#551A8B");
+//END TS
