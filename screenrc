@@ -25,9 +25,9 @@ shelltitle "$ |bash"
 # bind f eval "caption splitonly" "hardstatus ignore"
 # bind F eval "caption always"    "hardstatus alwayslastline"
 
-bindkey "^[[5;2~" eval "copy" "stuff ^b"
-bindkey -m "^[[5;2~" stuff ^b
-bindkey -m "^[[6;2~" stuff ^f 
+#bindkey "^[[5;2~" eval "copy" "stuff ^b"
+#bindkey -m "^[[5;2~" stuff ^b
+#bindkey -m "^[[6;2~" stuff ^f 
 
 #
 # look and feel for the bottom two lines.
@@ -35,8 +35,9 @@ bindkey -m "^[[6;2~" stuff ^f
 caption     always        "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y | %72=Load: %l %{wk}"
 hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
 
-# screen -t mutt 0 /home/tiago/bin/mutt
+screen -t mutt 0 /home/tiago/bin/mutt
 # screen -t aptitude 0 /home/tiago/bin/apti
 screen -t ipy 1 /usr/bin/ipython
 screen -t bash 2
-screen -t zsh 3 /bin/zsh
+# screen -t zsh 3 /bin/zsh
+screen -t ema 9 emacsclient -nw
