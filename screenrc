@@ -41,3 +41,5 @@ screen -t ipy 1 /usr/bin/ipython
 screen -t bash 2
 # screen -t zsh 3 /bin/zsh
 screen -t ema 9 emacsclient -nw
+
+select 2
