@@ -1,5 +1,8 @@
 // -*- mode:javascript -*-
 
+require("/home/tiago/src/conkeror/conkeror-ibuffer/ibuffer.js");
+require("/home/tiago/src/conkeror/conkeror-ibuffer/ihistory.js");
+
 add_delicious_webjumps ("tiagosab");
 url_remoting_fn=load_url_in_new_buffer;
 define_webjump("t", "http://www.cnrtl.fr/definition/%s");
