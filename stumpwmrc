@@ -91,6 +91,9 @@
 (defcommand shutdown () ()
             (shell-command "sudo shutdown -h now"))
 
+(defcommand reboot () ()
+            (shell-command "sudo shutdown -r now"))
+
 (defcommand emacs () ()
             (run-or-raise "emacsclient -n -c -a \"\"" '(:class "Emacs")))
 
