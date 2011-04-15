@@ -101,7 +101,7 @@
             (run-or-raise "conkeror" '(:class "Conkeror")))
 
 (defcommand iceweasel () ()
-            (run-or-raise "iceweasel" '(:class "Firefox")))
+            (run-or-raise "iceweasel" '(:class "Iceweasel")))
 
 (defcommand screen () ()
             (run-or-raise "urxvt -title screen-session -e screen -xRR" 
