@@ -19,7 +19,7 @@
 #define FONTO       xft:DejaVu Sans Mono:size=18:style=Bold
 ##define FONT_BOLD  -*-monospace-bold-*-*-*-16-*-*-*-*-*-*-*
 
-#include "/home/tiago/etc/X11/Xdefaults.d/emacs.xrdb"
+##include "/home/tiago/etc/X11/Xdefaults.d/emacs.xrdb"
 
 !UXTerm*font:FONT
 !10x20
