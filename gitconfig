@@ -1,5 +1,5 @@
 [user]
-         name = Tiago Saboga
-         email = tiagosaboga@gmail.com
+	name = Tiago Saboga
+	email = tiagosaboga@gmail.com
 [core]
         excludesfile = /home/tiago/etc/gitexcludes
