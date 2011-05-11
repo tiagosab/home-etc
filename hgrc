@@ -1,0 +1,6 @@
+# Mercurial configuration file
+# name=~/.hgrc
+
+[extensions]
+# enabling extensions (see hg help extensions)
+mq = 
