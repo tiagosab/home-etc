@@ -29,7 +29,14 @@ set sendmail="/usr/sbin/sendmail -oem -oi"
 #          | xargs -0 echo` \
 # 		 /home/tiago/Mail/spam/spam-inbox \
 # 		 /home/tiago/Mail/yahoo
-set imap_user="tiagosaboga@gmail.com"
+
+# Take user and pass out of .netrc.
+# Adapted from http://does-not-exist.org/mail-archives/mutt-dev/msg09455.html
+set imap_user=`awk '/^ *login/{print $2}' ~/.netrc`
+set imap_pass=`awk '/^ *password/{print $2}' ~/.netrc`
+# set folder="imaps://`awk '/^machine/{print $2}' ~/.netrc`/INBOX"
+# set imap_user="tiagosaboga@gmail.com"
+
 # mailboxes imaps://imap.gmail.com:993
 set folder="imaps://imap.gmail.com:993"
 set spoolfile="+INBOX"
@@ -84,10 +91,12 @@ alias shazamdev Shazam-devel <shazam-devel@lists.sourceforge.net>
 subscribe shazam-commits
 subscribe shazam-issues
 
-macro generic,index,pager \ca "<shell-escape>/home/tiago/bin/pycocuma<return>" "launch pycocuma"
-macro index,pager A "<pipe-message>/home/tiago/bin/pycocuma --add-email<return>" "add the sender address to pycocuma"
+# macro generic,index,pager \ca "<shell-escape>/home/tiago/bin/pycocuma<return>" "launch pycocuma"
+macro index,pager A "<pipe-message>goobook add<return>" "add the sender address to pycocuma"
 # set query_command="abook --mutt-query %s"
-set query_command="/home/tiago/src/pyti/pycocuma/pycocuma --mutt-query %s 2>/dev/null"
+# set query_command="/home/tiago/src/pyti/pycocuma/pycocuma --mutt-query %s 2>/dev/null"
+set query_command="goobook query '%s'"
+bind editor <Tab> complete-query
 # macro pager A |'abook --add-email'\n
 
 
