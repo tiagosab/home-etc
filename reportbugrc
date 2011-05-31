@@ -18,4 +18,4 @@ realname "Tiago Saboga"
 #smtphost bugs.debian.org
 # You can add other settings after this line.  See
 # /etc/reportbug.conf for a full listing of options.
-mua '/usr/bin/mutt -H'
+# mua mutt
