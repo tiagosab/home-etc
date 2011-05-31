@@ -92,7 +92,7 @@ subscribe shazam-commits
 subscribe shazam-issues
 
 # macro generic,index,pager \ca "<shell-escape>/home/tiago/bin/pycocuma<return>" "launch pycocuma"
-macro index,pager A "<pipe-message>goobook add<return>" "add the sender address to pycocuma"
+# macro index,pager A "<pipe-message>goobook add<return>" "add the sender address to pycocuma"
 # set query_command="abook --mutt-query %s"
 # set query_command="/home/tiago/src/pyti/pycocuma/pycocuma --mutt-query %s 2>/dev/null"
 set query_command="goobook query '%s'"
@@ -184,12 +184,14 @@ alias didier Didier Briel <d.briel@free.fr>
 alias thomas Thomas <thsa@superig.com.br>
 
 # Press X to mark a message as spam and delete it
-macro index X "s=spam/spam\ns" "mark as spam"
-macro pager X "s=spam/spam\n" "mark as spam"
+macro index X "<save-message>=[Gmail]/Spam?<enter>"    "mark message as spam"
+macro pager X "<save-message>=[Gmail]/Spam?<enter>"    "mark message as spam"
 
 # Press H to mark a message as non-spam (ham)
-macro index H "C=spam/ham\ns" "mark as ham"
-macro pager H "C=spam/ham\ns" "mark as ham"
+macro index,pager H "<save-message>=INBOX<enter>"               "mark message as ham"
+
+# Prexx C-x to really delete a message
+macro index,pager "\Cx" "<save-message>=[Gmail]/Trash<enter>"   "really delete message"
 
 # Load mutt manual in w3mmee
 macro generic <f1> "!w3mmee /usr/share/doc/mutt/html/manual.html\n" "Show Mutt documentation"
