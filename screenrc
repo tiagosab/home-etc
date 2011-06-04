@@ -35,7 +35,7 @@ shelltitle "$ |bash"
 caption     always        "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y | %72=Load: %l %{wk}"
 hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
 
-screen -t mutt 0 /home/tiago/bin/mutt
+screen -t mutt 0 /home/tiago/bin/mamutt
 # screen -t aptitude 0 /home/tiago/bin/apti
 screen -t ipy 1 /usr/bin/ipython
 screen -t bash 2
