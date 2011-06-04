@@ -191,7 +191,7 @@ macro pager X "<save-message>=[Gmail]/Spam?<enter>"    "mark message as spam"
 macro index,pager H "<save-message>=INBOX<enter>"               "mark message as ham"
 
 # Prexx C-x to really delete a message
-macro index,pager "\Cx" "<save-message>=[Gmail]/Trash<enter>"   "really delete message"
+macro index,pager "\Cx" "<clear-flag>N<enter><clear-flag>O<enter><save-message>=[Gmail]/Trash<enter>"   "really delete message"
 
 # Load mutt manual in w3mmee
 macro generic <f1> "!w3mmee /usr/share/doc/mutt/html/manual.html\n" "Show Mutt documentation"
