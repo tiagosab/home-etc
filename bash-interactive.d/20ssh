@@ -18,5 +18,6 @@ if [ -f "${SSH_ENV}" ]; then
          start_ssh_agent;
      }
 else
-     start_ssh_agent;
+    # start_ssh_agent;
+    echo "SSH agent not running."
 fi 

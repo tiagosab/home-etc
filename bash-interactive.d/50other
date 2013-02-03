@@ -2,11 +2,14 @@
 stty stop undef
 stty start undef
 
- # check the window size after each command and, if necessary,
+# check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # set PATH so it includes user's private bin if it exists
+if [ -d ~/src/pyti/scripts ] ; then
+    PATH=~/src/pyti/scripts:"${PATH}"
+fi
 if [ -d ~/bin ] ; then
     PATH=~/bin:~/src/pyti/scripts:"${PATH}"
 fi

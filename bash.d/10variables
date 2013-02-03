@@ -1,5 +1,5 @@
 # -*- mode: shell-script -*-
-export PYTHONPATH='/home/tiago/lib/python'
+# export PYTHONPATH='/home/tiago/lib/python'
 export DEBFULLNAME='Tiago Saboga'
 export DEBEMAIL='tiagosaboga@gmail.com'
 if [ $TERM == 'dumb' ]

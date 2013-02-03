@@ -28,5 +28,6 @@ if [ -f "${GPG_INFO}" ]; then
         start_gpg_agent;
     }
 else
-     start_gpg_agent;
+    echo "GPG agent not running."
+    # start_gpg_agent;
 fi 
