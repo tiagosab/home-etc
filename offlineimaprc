@@ -1,0 +1,57 @@
+# From sample minimal config file.
+# Link: ~/.offlineimaprc
+
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = main
+
+[Account main]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = main-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = gmail-remote
+# Status cache. Default is plain, which eventually becomes huge and slow.
+status_backend = sqlite
+
+# You can have offlineimap continue running indefinitely, automatically
+# syncing your mail periodically.  If you want that, specify how
+# frequently to do that (in minutes) here.  You can also specify
+# fractional minutes (ie, 3.25).
+
+autorefresh = 5
+
+# OfflineImap can replace a number of full updates by quick
+# synchronizations.  It only synchronizes a folder if 1) a Maildir
+# folder has changed, or 2) if an IMAP folder has received new messages
+# or had messages deleted, ie it does not update if only IMAP flags have
+# changed.  Full updates need to fetch ALL flags for all messages, so
+# this makes quite a performance difference (especially if syncing
+# between two IMAP servers).
+# Specify 0 for never, -1 for always (works even in non-autorefresh
+# mode), or a positive integer <n> to do <n> quick updates before doing
+# another full synchronization (requires autorefresh).  Updates are
+# always performed after <autorefresh> minutes, be they quick or full.
+
+quick = 10
+
+# You can specify a pre and post sync hook to execute a external command.
+# in this case a call to imapfilter to filter mail before the sync process
+# starts and a custom shell script after the sync completes.
+# The pre sync script has to complete before a sync to the account will
+# start. 
+
+
+[Repository main-local]
+# Currently, offlineimap only supports maildir and IMAP for local repositories.
+type = IMAP
+preauthtunnel = MAIL=maildir:$HOME/Maildir /usr/lib/dovecot/imap
+holdconnectionopen = yes
+
+
+[Repository gmail-remote]
+type = Gmail
+remoteuser = tiagosaboga@gmail.com
+folderfilter = lambda foldername: foldername in \
+      ['INBOX', 'pol/bspinoza', 'vf', 'auto-envio', 'herio']
+# Necessary as of OfflineIMAP 6.5.4
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
