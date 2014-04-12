@@ -1,3 +1,4 @@
+# ts-link: ~/.muttrc
 set realname="Tiago Saboga"
 
 set reverse_name
@@ -6,7 +7,7 @@ alternates -group 'eu' "tiagosaboga@oi.com.br|tiagosaboga@terra.com.br|tiagosab@
 set use_from=yes
 set use_envelope_from
 
-set editor='emacsclient.emacs-snapshot -nw'
+set editor='emacsclient -nw'
 set print_command="muttprint"
 # set folder=~/Mail
 
@@ -32,20 +33,21 @@ set sendmail="/usr/sbin/sendmail -oem -oi"
 
 # Take user and pass out of .netrc.
 # Adapted from http://does-not-exist.org/mail-archives/mutt-dev/msg09455.html
-set imap_user=`awk '/^ *login/{print $2}' ~/.netrc`
-set imap_pass=`awk '/^ *password/{print $2}' ~/.netrc`
+# set imap_user=`awk '/^ *login/{print $2}' ~/.netrc`
+# set imap_pass=`awk '/^ *password/{print $2}' ~/.netrc`
 # set folder="imaps://`awk '/^machine/{print $2}' ~/.netrc`/INBOX"
 # set imap_user="tiagosaboga@gmail.com"
 
 # mailboxes imaps://imap.gmail.com:993
-set folder="imaps://imap.gmail.com:993"
-set spoolfile="+INBOX"
-set postponed="+[Gmail]/Drafts"
+set tunnel="/usr/lib/dovecot/imap"
+set folder="imap://localhost"
+#set spoolfile="+INBOX"
+#set postponed="+[Gmail]/Drafts"
 #set trash="imaps://imap.gmail.com/[Gmail]/Trash"
 set imap_check_subscribed
 
-set header_cache = ~/var/cache/mutt/headers
-set message_cachedir = ~/var/cache/mutt/bodies
+#set header_cache = ~/var/cache/mutt/headers
+#set message_cachedir = ~/var/cache/mutt/bodies
 set certificate_file = ~/var/certificates/mutt
 
 set index_format="%4C %Z %{%b %d} %-15.15F (%?l?%4l&%4c?) %s"
