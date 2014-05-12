@@ -1,3 +1,4 @@
 # variables
 
 export SCREENRC=/home/tiago/etc/screenrc
+export LEDGER_FILE=/home/tiago/comuna/casa/gnucash/casa.gnucash
