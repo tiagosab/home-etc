@@ -1,0 +1,15 @@
+#-*- sh -*-
+# set PATH so it includes user's private bins if they exist
+
+add_to_path()
+{
+    if [ -d $1 ]
+    then
+        PATH="$1:${PATH}"
+    fi
+}
+
+add_to_path("~/src/pyti/scripts")
+add_to_path("~/bin")
+add_to_path("~/.local/bin")
+add_to_path("~/src/tibin")

@@ -1,3 +1,4 @@
+# -*- sh -*-
 # Disable C-s/C-q (xon/xoff flow control)
 stty stop undef
 stty start undef
@@ -5,19 +6,6 @@ stty start undef
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-# set PATH so it includes user's private bin if it exists
-if [ -d ~/src/pyti/scripts ] ; then
-    PATH=~/src/pyti/scripts:"${PATH}"
-fi
-if [ -d ~/bin ] ; then
-    PATH=~/bin:~/src/pyti/scripts:"${PATH}"
-fi
-
-# also include .local tree
-if [ -d ~/.local/bin ] ; then
-    PATH=~/.local/bin:"${PATH}"
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
