@@ -5,4 +5,8 @@
 #
 # Start emacs if not done.
 
-emacsclient -e '(message "Contacting home.")' -a '' 2>/dev/null 1>&2 &
+EMACS="/home/tiago/src/emac/build/src/emacs"
+
+{ emacsclient -e '(message "Contacting home.")' || \
+  ${EMACS} --daemon
+} 2>/dev/null 1>&2 &
