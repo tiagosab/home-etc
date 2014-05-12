@@ -2,21 +2,22 @@
 
 if [ -d "$1" ]; then
     realpath "$1"; /bin/ls -lh --color=always $1
-    return 0
+    exit 0
 fi
-    # view strings inside of an executable
+
+# view strings inside of an executable
 if [ -x "$1" ]; then
-    type=$(file "$1")
+    type=$(file -L "$1" 2>/dev/null)
     case "$type" in 
         *executable* )
             echo -e "$type\n"
             strings "$1"
-            return 0
+            exit 0
             ;;
     esac
 fi
 
 if [ -f $1 -a -r $1 ] 
 then
-    exec source-highlight -f esc --style-file=esc.style -i $1
-fi    
+    exec pygmentize -g $1
+fi
