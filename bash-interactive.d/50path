@@ -9,7 +9,7 @@ add_to_path()
     fi
 }
 
-add_to_path("~/src/pyti/scripts")
-add_to_path("~/bin")
-add_to_path("~/.local/bin")
-add_to_path("~/src/tibin")
+add_to_path ~/src/pyti/scripts
+add_to_path ~/bin
+add_to_path ~/.local/bin
+add_to_path ~/lib/tibin

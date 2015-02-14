@@ -2,6 +2,7 @@
 # export PYTHONPATH='/home/tiago/lib/python'
 export DEBFULLNAME='Tiago Saboga'
 export DEBEMAIL='tiagosaboga@gmail.com'
+export DEFAULTWM='dwm'
 if [ $TERM == 'dumb' ]
 then
     EMACSARGS=''

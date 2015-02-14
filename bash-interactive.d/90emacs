@@ -5,8 +5,20 @@
 #
 # Start emacs if not done.
 
-EMACS="/home/tiago/src/emac/build/src/emacs"
+EMACS=emacs
 
 { emacsclient -e '(message "Contacting home.")' || \
   ${EMACS} --daemon
 } 2>/dev/null 1>&2 &
+
+function ema() {
+    case $TERM in
+	linux|screen)
+	    local TERM=vt100
+	    ;;
+	*)
+	    local TERM=xterm-mono
+	    ;;
+    esac
+    TERM=$TERM emacsclient "$@"
+}

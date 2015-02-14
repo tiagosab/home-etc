@@ -35,5 +35,3 @@ interactivedir="${etcpath}/bash-interactive.d"
 if [ $interactive -eq 0 ]; then
     ts-source-parts "${interactivedir}"
 fi
-
-[[ -f "/home/tiago/.config/autopackage/paths-bash" ]] && . "/home/tiago/.config/autopackage/paths-bash"

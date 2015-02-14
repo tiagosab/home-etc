@@ -19,7 +19,7 @@ alias po="popd"
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
+    eval "`dircolors -b $HOME/etc/dircolors`"
     alias ls='ls --color=auto'
 fi
 # some more ls aliases
@@ -47,3 +47,8 @@ alias nmh='PATH=/usr/bin/mh:/home/tiago/bin:/home/tiago/bin:/usr/local/bin:/usr/
 alias dquilt='quilt --quiltrc=${HOME}/etc/quiltrc-dpkg '
 alias lesc='LESS="-R" LESSOPEN="|pygmentize -g %s" less'
 alias lesa='LESS="-R" LESSOPEN="|~/etc/lessfilter %s" LESSCLOSE="~/etc/lessfilter %s %s" less'
+alias chrome-bb='setarch x86_64 --uname-2.6 google-chrome'
+alias emapipe='emacsclient -n -e "(progn (switch-to-buffer "*results*") (shell-command "cat ~/piping.fifo" "*results*"))" & cat >~/piping.fifo'
+alias bb='setarch x86_64 --uname-2.6'
+alias mld='cd /var/lib/mldonkey/incoming; ls *'
+alias offl='/home/tiago/src/offlineimap/offlineimap.py'
