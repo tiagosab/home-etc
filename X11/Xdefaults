@@ -11,7 +11,7 @@
 #define FONTG       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
 #define FONTH       -*-bitstream vera sans mono-medium-*-*-*-16-*-*-*-*-*-*-*
 #define FONTI       -*-monospace-medium-*-*-*-16-*-*-*-*-*-*-*
-#define FONTJ       xft:Bitstream Vera Sans mono:size=17
+#define FONTJ       xft:Bitstream Vera Sans mono:size=13
 #define FONTK       -*-liberation.mono-*-r-*-*-*-*-*-*-*-*-*-*
 #define FONTL       -*-liberation.mono-*-r-*-16-*-*-*-*-*-*-*-*
 #define FONTM       -*-liberation.mono-*-r-*-20-*-*-*-*-*-*-*-*
