@@ -1,13 +1,18 @@
-loadxrdb
+# loadxrdb
 #uxterm &
 #xmodmap -e "add mod4 = Super_R"
 #xmodmap -e "add Meta = Super_L" 
 #xmodmap ~/.xmodmaprc
-# xbindkeys
+#xbindkeys -f /home/tiago/etc/xbindkeysrc
+
+xrandr --output LVDS1 --off
+xrandr --output VGA1 --auto
+xrdb ~/etc/X11/Xdefaults
 
 #exec urxvt -e run_dwm.sh
 #exec dtach -n dwm /usr/bin/dwm
-run_dwm.sh
+/home/tiago/lib/tibin/run_dwm.sh
 #exec bash -c /home/tiago/bin/run_dwm.sh
 
+# exec /home/tiago/src/dwm/dwm
 # exec dwm
