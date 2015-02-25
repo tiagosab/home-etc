@@ -27,7 +27,7 @@ def ts_folderfilter(foldername):
       ['INBOX', 'pol/bspinoza', 'vf', 'auto-envio', 'herio', 'lixo', \
       'velhos/2009-2010', 'velhos/2009-2010/herio', 'velhos/2009-2010/virginia', \
        'velhos/2009-2010/incoming', 'Trash', 'Drafts', '[Gmail]/Sent Mail', \
-       '[Gmail]/Trash']
+       '[Gmail]/Trash', 'banco']
 
 if __name__=="__main__":
     main()
