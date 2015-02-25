@@ -36,42 +36,39 @@
 
 
 #Remark
-"urxvt -e mutt"
-    Mod1 + m 
-"oowriter"
-    Mod1 + w
-"iceweasel"
-    Mod1 + i
-"urxvt -e /home/tiago/bin/bash-remote"
-    Mod1 + q
+# "urxvt -e mutt"
+#     Mod1 + m 
+# "oowriter"
+#     Mod1 + w
+# "iceweasel"
+#     Mod1 + i
+# "urxvt -e /home/tiago/bin/bash-remote"
+#     Mod1 + q
 # Now v is used for vmware
 #"vlc"
 #    Mod1 + v
 "urxvt"
-    Mod1 + backslash
-"amixer sset Front 1+"
-    Mod1 + KP_Add
-"amixer sset Front 1-"
-    Mod1 + KP_Subtract
-"toggle_mute.sh"
-    Mod1 + KP_Decimal
-"conkeror"
-    Mod1 + k
+    Mod4 + backslash
+# "amixer sset Front 1+"
+#     Mod1 + KP_Add
+# "amixer sset Front 1-"
+#     Mod1 + KP_Subtract
+# "toggle_mute.sh"
+#     Mod1 + KP_Decimal
+# "conkeror"
+#     Mod1 + k
 #"urxvt"
 #    Mod1 + KP_Up
-"emacsclient -c"
-    Mod1 + e
-# "/home/tiago/.mozilla/firefox/r6yqhy0u.default/extensions/VMwareVMRC@vmware.com/plugins/vmware-vmr# c -h '127.0.0.1:8333' -M '112'"
-"/home/tiago/bin/kvmnow"
-    Mod1 + v
+"emacsclient -c -n"
+    Mod4 + e
 #"AWT_TOOLKIT=MToolkit netbeans"
 #    Mod1 + n
-"urxvt -e ipython"
-    Mod1 + p
+#"urxvt -e ipython"
+#    Mod1 + p
 "urxvt -e screen -xRR"
-    Mod1 + s
-"grun"
-    Mod1 + z
+    Mod4 + s
+#"grun"
+#    Mod1 + z
 
 #"xclock"
 #    Mod1 + l
