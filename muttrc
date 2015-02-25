@@ -36,18 +36,7 @@ set sendmail="/usr/sbin/sendmail -oem -oi"
 # set imap_user=`awk '/^ *login/{print $2}' ~/.netrc`
 # set imap_pass=`awk '/^ *password/{print $2}' ~/.netrc`
 # set folder="imaps://`awk '/^machine/{print $2}' ~/.netrc`/INBOX"
-# set imap_user="tiagosaboga@gmail.com"
 
-# mailboxes imaps://imap.gmail.com:993
-set tunnel="/usr/lib/dovecot/imap"
-set folder="imap://localhost"
-#set spoolfile="+INBOX"
-#set postponed="+[Gmail]/Drafts"
-#set trash="imaps://imap.gmail.com/[Gmail]/Trash"
-set imap_check_subscribed
-
-#set header_cache = ~/var/cache/mutt/headers
-#set message_cachedir = ~/var/cache/mutt/bodies
 set certificate_file = ~/var/certificates/mutt
 
 set index_format="%4C %Z %{%b %d} %-15.15F (%?l?%4l&%4c?) %s"
@@ -97,8 +86,8 @@ subscribe shazam-issues
 # macro index,pager A "<pipe-message>goobook add<return>" "add the sender address to pycocuma"
 # set query_command="abook --mutt-query %s"
 # set query_command="/home/tiago/src/pyti/pycocuma/pycocuma --mutt-query %s 2>/dev/null"
-set query_command="goobook query '%s'"
-bind editor <Tab> complete-query
+# set query_command="goobook query '%s'"
+# bind editor <Tab> complete-query
 # macro pager A |'abook --add-email'\n
 
 
