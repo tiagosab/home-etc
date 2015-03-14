@@ -37,6 +37,9 @@ add-alias ()
     alias $name
 }
 
+# open file in emacs and raise emacs window. See ts-raiseme function
+# in my emacs lib
+alias edi='emacsclient -e "(ts-raiseme)"; emacsclient -n'
 
 # Aliases added with add-alias:
 alias xine='xine --no-splash'
