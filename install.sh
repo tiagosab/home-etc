@@ -17,6 +17,8 @@ ln -s  ${ETC}/reportbugrc    ${HOME}/.reportbugrc
 ln -s  ${ETC}/screenrc	     ${HOME}/.screenrc           
 ln -s  ${ETC}/stumpwmrc	     ${HOME}/.stumpwmrc          
 ln -s  ${ETC}/sensible-data/netrc ${HOME}/.netrc
+ln -s  ${ETC}/pulseaudio/default.pa \
+   ${HOME}/.config/pulse/default.pa
 
 if [ "$(crontab -l)" ]
 then
