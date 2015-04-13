@@ -12,3 +12,8 @@
 	helper = cache --timeout=3600
 [alias]
 	permission-reset = !git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply
+
+[include]
+    path = ~/etc/sensible-data/gitconfig-github
+[push]
+	default = simple
